@@ -20,6 +20,9 @@ struct ContentView: View {
             }
         }
         .padding()
+        .onAppear {
+            Vocabulary.Words.jsonRepresentation()
+        }
     }
 }
 
