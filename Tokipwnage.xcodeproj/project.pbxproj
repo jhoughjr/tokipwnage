@@ -15,6 +15,9 @@
 		D8934C82296F016900A04BA5 /* TokipwnageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C81296F016900A04BA5 /* TokipwnageUITests.swift */; };
 		D8934C84296F016900A04BA5 /* TokipwnageUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C83296F016900A04BA5 /* TokipwnageUITestsLaunchTests.swift */; };
 		D8934C91296F01D300A04BA5 /* Toki.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C90296F01D300A04BA5 /* Toki.swift */; };
+		D8934C95296F151600A04BA5 /* WordsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C94296F151600A04BA5 /* WordsProvider.swift */; };
+		D8934C97296F15AF00A04BA5 /* WordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C96296F15AF00A04BA5 /* WordsListView.swift */; };
+		D8934C99296F15CA00A04BA5 /* WordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C98296F15CA00A04BA5 /* WordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		D8934C81296F016900A04BA5 /* TokipwnageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokipwnageUITests.swift; sourceTree = "<group>"; };
 		D8934C83296F016900A04BA5 /* TokipwnageUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokipwnageUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D8934C90296F01D300A04BA5 /* Toki.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toki.swift; sourceTree = "<group>"; };
+		D8934C94296F151600A04BA5 /* WordsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsProvider.swift; sourceTree = "<group>"; };
+		D8934C96296F15AF00A04BA5 /* WordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsListView.swift; sourceTree = "<group>"; };
+		D8934C98296F15CA00A04BA5 /* WordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +103,9 @@
 		D8934C64296F016700A04BA5 /* Tokipwnage */ = {
 			isa = PBXGroup;
 			children = (
+				D8934C93296F14EF00A04BA5 /* Observables */,
+				D8934C92296F14DC00A04BA5 /* Views */,
 				D8934C65296F016800A04BA5 /* TokipwnageApp.swift */,
-				D8934C67296F016800A04BA5 /* ContentView.swift */,
 				D8934C69296F016900A04BA5 /* Assets.xcassets */,
 				D8934C6B296F016900A04BA5 /* Tokipwnage.entitlements */,
 				D8934C6C296F016900A04BA5 /* Preview Content */,
@@ -130,6 +137,24 @@
 				D8934C83296F016900A04BA5 /* TokipwnageUITestsLaunchTests.swift */,
 			);
 			path = TokipwnageUITests;
+			sourceTree = "<group>";
+		};
+		D8934C92296F14DC00A04BA5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8934C67296F016800A04BA5 /* ContentView.swift */,
+				D8934C96296F15AF00A04BA5 /* WordsListView.swift */,
+				D8934C98296F15CA00A04BA5 /* WordView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D8934C93296F14EF00A04BA5 /* Observables */ = {
+			isa = PBXGroup;
+			children = (
+				D8934C94296F151600A04BA5 /* WordsProvider.swift */,
+			);
+			path = Observables;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +287,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8934C95296F151600A04BA5 /* WordsProvider.swift in Sources */,
 				D8934C68296F016800A04BA5 /* ContentView.swift in Sources */,
+				D8934C99296F15CA00A04BA5 /* WordView.swift in Sources */,
 				D8934C91296F01D300A04BA5 /* Toki.swift in Sources */,
 				D8934C66296F016800A04BA5 /* TokipwnageApp.swift in Sources */,
+				D8934C97296F15AF00A04BA5 /* WordsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
