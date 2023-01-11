@@ -214,6 +214,40 @@ public class Vocabulary {
                         Definition(.noun,"someone"),
                         Definition(.adjective,"human-like"),
                         Definition(.adjective,"personal")]
+            case .jasima:
+                return [Definition(.noun,"mirror"),
+                        Definition(.noun,"reflection"),
+                        Definition(.noun,"echo"),
+                        Definition(.adjective,"opposite"),
+                        Definition(.verb,"to reflect"),
+                        Definition(.verb,"to reverse")]
+            case .jelo:
+                return [Definition(.noun,"the color yellow"),
+                        Definition(.adjective,"yellowish"),
+                        Definition(.verb,"to make yellow"),
+                        ]
+            case .jo:
+                return [Definition(.noun,"property"),
+                        Definition(.noun,"posessions", isDeprecated: true),
+                        Definition(.verb,"to have"),
+                        Definition(.verb,"to carry"),
+                        Definition(.verb,"to contain"),
+                        Definition(.verb,"to hold"),
+                        ]
+            case .kala:
+                return [ Definition(.noun,"sea creature"),
+                         Definition(.noun,"fish"),
+                         Definition(.noun,"marine animal"),]
+            case .kalama:
+                return [ Definition(.noun,"sound"),
+                         Definition(.noun,"noise"),
+                         Definition(.adjective,"loud"),
+                         Definition(.adjective,"noisy"),
+                         Definition(.adjective,"sound making"),
+                         Definition(.verb,"to make noise"),
+                         Definition(.verb,"to recite"),
+                         Definition(.verb,"to play a musical instrument"),
+                         ]
             }
         }
         
@@ -241,44 +275,30 @@ public class Vocabulary {
         case insa
         case jaki
         case jan
-        
+        case jasima
+        case jelo
+        case jo
+        case kala
+        case kalama
         /*
          
-         jasima (nimi ku suli)
-
-         noun: mirror, reflection, echo
-         adjective: opposite
-         verb: to reflect, to reverse
          
-         jelo
-
-         noun/adjective: (the color) yellow (and its shades)
-         verb: to color smth yellow
-         jo
-
-         noun: (unconventional) possessions, property
-         verb: to have/carry/contain/hold
-         kala
-
-         noun: fish, marine animal, sea creature
-         kalama
-
-         noun: sound, noise
-         adjective: loud, noisy, sound-making
-         verb: to make noise, to recite, to play (an instrument)
          kama
 
          noun: event, arrival
          adjective: arriving, coming, future, summoned
          pre-verb: to become, to be in the process of (doing smth), to manage to, to succeed in
+         
          kasi
 
          noun: plant, grass, herb, leaf
+         
          ken
 
          noun: ability, possibility, (unconventional) right, liberty
          adjective (unconventional): able, possible
          pre-verb: can (do smth), may (do smth)
+         
          kepeken
 
          noun: use, (unconventional) practice
