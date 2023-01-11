@@ -248,6 +248,27 @@ public class Vocabulary {
                          Definition(.verb,"to recite"),
                          Definition(.verb,"to play a musical instrument"),
                          ]
+            case .kama:
+                return [ Definition(.noun,"event"),
+                         Definition(.noun,"arrival"),
+                         Definition(.adjective,"arriving"),
+                         Definition(.adjective,"coming"),
+                         Definition(.adjective,"future"),
+                         Definition(.adjective,"summoned"),
+
+                         Definition(.preverb,"to become"),
+                         Definition(.preverb,"to be in the process of doing"),
+                         Definition(.preverb,"to manage to do"),
+                         Definition(.preverb,"to succeed in"),
+                         ]
+            case .kasi:
+                return [Definition(.noun,"plant"),
+                        Definition(.noun,"grass"),
+                        Definition(.noun,"herb"),
+                        Definition(.noun,"leaf"),
+
+
+]
             }
         }
         
@@ -280,19 +301,10 @@ public class Vocabulary {
         case jo
         case kala
         case kalama
+        case kama
+        case kasi
         /*
-         
-         
-         kama
-
-         noun: event, arrival
-         adjective: arriving, coming, future, summoned
-         pre-verb: to become, to be in the process of (doing smth), to manage to, to succeed in
-         
-         kasi
-
-         noun: plant, grass, herb, leaf
-         
+                  
          ken
 
          noun: ability, possibility, (unconventional) right, liberty
