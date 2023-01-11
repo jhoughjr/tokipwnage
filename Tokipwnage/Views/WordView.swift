@@ -9,6 +9,8 @@ import SwiftUI
 
 struct WordView: View {
     let word:Vocabulary.Words
+    @ObservedObject var speaker = Speaker()
+    @ObservedObject var prefs = Preferences()
     
     func filteredFor(part:Vocabulary.Words.PartsOfSpeech) -> [Vocabulary.Words.Definition] {
         word.definitions.filter({$0.partOfSpeech == part})
@@ -77,7 +79,7 @@ struct WordView: View {
             Text(word.rawValue)
                 .font(.title)
             Button {
-                
+                speaker.speak(word)
             } label: {
                 Image(systemName: "speaker.wave.3")
             }
@@ -93,6 +95,11 @@ struct WordView: View {
             partOfSpeechSortedList
         }
         .padding()
+        .onAppear {
+            if prefs.autoSpeak {
+                speaker.speak(word)
+            }
+        }
     }
 }
 

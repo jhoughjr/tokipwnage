@@ -18,6 +18,8 @@
 		D8934C95296F151600A04BA5 /* WordsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C94296F151600A04BA5 /* WordsProvider.swift */; };
 		D8934C97296F15AF00A04BA5 /* WordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C96296F15AF00A04BA5 /* WordsListView.swift */; };
 		D8934C99296F15CA00A04BA5 /* WordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C98296F15CA00A04BA5 /* WordView.swift */; };
+		D8934C9B296F733C00A04BA5 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C9A296F733C00A04BA5 /* Speaker.swift */; };
+		D8934C9D296F77DA00A04BA5 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C9C296F77DA00A04BA5 /* Preferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		D8934C94296F151600A04BA5 /* WordsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsProvider.swift; sourceTree = "<group>"; };
 		D8934C96296F15AF00A04BA5 /* WordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsListView.swift; sourceTree = "<group>"; };
 		D8934C98296F15CA00A04BA5 /* WordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordView.swift; sourceTree = "<group>"; };
+		D8934C9A296F733C00A04BA5 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		D8934C9C296F77DA00A04BA5 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 				D8934C67296F016800A04BA5 /* ContentView.swift */,
 				D8934C96296F15AF00A04BA5 /* WordsListView.swift */,
 				D8934C98296F15CA00A04BA5 /* WordView.swift */,
+				D8934C9C296F77DA00A04BA5 /* Preferences.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				D8934C94296F151600A04BA5 /* WordsProvider.swift */,
+				D8934C9A296F733C00A04BA5 /* Speaker.swift */,
 			);
 			path = Observables;
 			sourceTree = "<group>";
@@ -291,7 +297,9 @@
 				D8934C68296F016800A04BA5 /* ContentView.swift in Sources */,
 				D8934C99296F15CA00A04BA5 /* WordView.swift in Sources */,
 				D8934C91296F01D300A04BA5 /* Toki.swift in Sources */,
+				D8934C9B296F733C00A04BA5 /* Speaker.swift in Sources */,
 				D8934C66296F016800A04BA5 /* TokipwnageApp.swift in Sources */,
+				D8934C9D296F77DA00A04BA5 /* Preferences.swift in Sources */,
 				D8934C97296F15AF00A04BA5 /* WordsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
