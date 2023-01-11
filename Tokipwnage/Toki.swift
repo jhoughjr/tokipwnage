@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 public class Vocabulary {
     public enum NumberSystem {
         case simple
@@ -152,6 +153,25 @@ public class Vocabulary {
                         Definition(.verb,"protect"),
                         Definition(.preverb,"continue doing")
                 ]
+            case .e:
+                return [Definition(.particle, "a")]
+            case .en:
+                return [Definition(.particle, "and")]
+            case .epiku:
+                return [Definition(.adjective, "awesome")]
+            case .esun:
+                return [Definition(.adjective, "commercial"),
+                        Definition(.verb, "to trade"),
+                        Definition(.verb, "to exhange"),
+                        Definition(.noun, "trade"),
+                        Definition(.noun, "transaction"),
+                        Definition(.noun, "exhange")]
+            case .ijo:
+                return [Definition(.adjective, "physical"),
+                        Definition(.adjective, "material"),
+                        Definition(.noun, "thing"),
+                        Definition(.noun, "object"),
+                        Definition(.noun, "matter")]
             }
         }
         
@@ -169,5 +189,11 @@ public class Vocabulary {
         case ante
         case anu
         case awen
+        case e
+        case en
+        case epiku
+        case esun
+        case ijo
+        
     }
 }
