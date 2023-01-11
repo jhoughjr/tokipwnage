@@ -155,6 +155,10 @@ public class Vocabulary {
             }
         }
         
+        public var partsOfSpeech:[PartsOfSpeech] {
+            Set<PartsOfSpeech>(self.definitions.map({$0.partOfSpeech})).reversed().reversed()
+        }
+        
         case a
         case akesi
         case ala
