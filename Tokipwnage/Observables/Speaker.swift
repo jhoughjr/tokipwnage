@@ -9,11 +9,19 @@ import SwiftUI
 import AVKit
 
 class Speaker:ObservableObject {
+    
+    /// Globalized via @AppStorage
+    ///  Used to get selected voice.
     @ObservedObject var prefs = Preferences()
     
+    /// Published so that UI can react to speech state
     @Published var isSpeaking = false
+    
+    /// The Speech Synth used for TTS.
     let synthesizer = AVSpeechSynthesizer()
 
+    ///  Immediately speaks the word with the selected voice.
+    ///     NOTE: If no voice is selected, does nnothing.
     public func speak(_ word:Vocabulary.Words) {
         // Create an utterance.
         guard  !prefs.selectedVoice.isEmpty else {
@@ -28,7 +36,8 @@ class Speaker:ObservableObject {
         synthesizer.speak(utterance)
     }
     
-    func processed(_ word:String) -> String {
+    ///  returns a form of the word the MX voice will pronouce propelry for Toki Pona
+    public func processed(_ word:String) -> String {
         return word.replacingOccurrences(of: "j", with: "ll")
     }
 }

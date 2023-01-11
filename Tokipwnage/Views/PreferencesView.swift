@@ -8,10 +8,6 @@
 import SwiftUI
 import AVKit
 
-class Preferences:ObservableObject {
-    @AppStorage("selected_voice") var selectedVoice = ""
-    @AppStorage("autoSpeak") var autoSpeak = true
-}
 
 struct PreferencesView: View {
     @ObservedObject var prefs = Preferences()

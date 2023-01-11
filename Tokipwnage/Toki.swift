@@ -7,15 +7,20 @@
 
 import Foundation
 
+/// Encapsulates a model of Toki Pona
 public class Vocabulary {
     
+    /// Identifies which number system a definition is used.
     public enum NumberSystem {
         case simple
         case complex
     }
     
+    /// The heart of the vocabulary.
+    /// an enumerated word has definitions and parts of speech it can be used as.
     public enum Words:String, CaseIterable, Codable {
         
+        /// Enumerates how you can use words according to synax.
         public enum PartsOfSpeech:String, CaseIterable, Codable {
             case noun
             case particle
@@ -26,6 +31,7 @@ public class Vocabulary {
             
         }
         
+        /// Composes of the part of speech and the meanings o words.
         public struct Definition:Codable, Hashable {
             let partOfSpeech:PartsOfSpeech
             let meaning:String
@@ -44,6 +50,7 @@ public class Vocabulary {
             }
         }
         
+        /// Every definition of a word consiting of its part of speech and meaing as aforementioned part.
         public var definitions:[Definition] {
             switch self {
             case .a:
@@ -272,6 +279,7 @@ public class Vocabulary {
             }
         }
         
+        /// A collection of every part of speech for this word, gathered from its definitions.
         public var partsOfSpeech:[PartsOfSpeech] {
             Set<PartsOfSpeech>(self.definitions.map({$0.partOfSpeech})).reversed().reversed()
         }
