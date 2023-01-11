@@ -198,6 +198,22 @@ public class Vocabulary {
                         Definition(.adjective, "inside"),
                         Definition(.adjective, "between"),
                         ]
+            case .jaki:
+                return [Definition(.noun,"dirt"),
+                        Definition(.noun,"waste"),
+                        Definition(.adjective,"dirty"),
+                        Definition(.adjective,"toxic"),
+                        Definition(.adjective,"unclean"),
+                        Definition(.adjective,"unsanitary"),
+                        Definition(.adjective,"disgusting"),
+                        Definition(.verb,"to make something dirty")]
+            case .jan:
+                return [Definition(.noun,"person"),
+                        Definition(.noun,"people"),
+                        Definition(.noun,"humanity"),
+                        Definition(.noun,"someone"),
+                        Definition(.adjective,"human-like"),
+                        Definition(.adjective,"personal")]
             }
         }
         
@@ -223,26 +239,17 @@ public class Vocabulary {
         case ike
         case ilo
         case insa
+        case jaki
+        case jan
+        
         /*
-        
-        
          
-         
-         jaki
-
-         noun: dirt, waste
-         adjective: dirty, disgusting, toxic, unclean, unsanitary
-         verb: to make something dirty
-         
-         jan
-
-         noun: person, people, humanity, somebody
-         adjective: human-like, personal
          jasima (nimi ku suli)
 
          noun: mirror, reflection, echo
          adjective: opposite
          verb: to reflect, to reverse
+         
          jelo
 
          noun/adjective: (the color) yellow (and its shades)
