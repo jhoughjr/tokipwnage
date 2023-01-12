@@ -11,6 +11,21 @@ import SwiftUI
 ///      Or it can load all words in the Vocabulary.
 public class WordsProvider:ObservableObject {
     
+    enum SearchCategory:String, CaseIterable, Codable {
+        case word
+        case meanings
+        func string() -> String {
+            switch self {
+            case .word:
+                return "word"
+            case.meanings:
+                return "meaning"
+            }
+        }
+    }
+    
+    @Published var category:SearchCategory = .word
+    
     /// the published word list
     @Published var words = [Vocabulary.Words]()
     
@@ -27,9 +42,24 @@ public class WordsProvider:ObservableObject {
     
     /// Sets the published words  to all words in the vocabulary containing a supplied string instead of the published search string.
     public func loadSearch(s:String) {
+        
+        guard !s.isEmpty else { loadAllWords();return}
+        
         words = Vocabulary.Words.allCases
                                 .filter({ word in
-                                    word.rawValue.contains(s)
+                                    switch category {
+                                    case .word:
+                                        return word.rawValue.contains(s)
+                                    case .meanings:
+                                        // discard cuz i dont want defs, i want words
+                                        var found = false
+                                        for def in word.definitions {
+                                            if def.meaning.contains(s) {
+                                                found = true
+                                            }
+                                        }
+                                        return found
+                                    }
         })
     }
     
