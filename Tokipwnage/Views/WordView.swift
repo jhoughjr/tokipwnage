@@ -11,9 +11,29 @@ struct WordView: View {
     let word:Vocabulary.Words
     @ObservedObject var speaker = Speaker()
     @ObservedObject var prefs = Preferences()
+    @ObservedObject var provider:WordsProvider
     
     func filteredFor(part:Vocabulary.Words.PartsOfSpeech) -> [Vocabulary.Words.Definition] {
         word.definitions.filter({$0.partOfSpeech == part})
+    }
+    
+    func splitFor(string:String, search:String) -> (String,String,String) {
+        let chunks = string.components(separatedBy: search)
+        return (chunks.first!,search,chunks.last!)
+
+    }
+    
+    @ViewBuilder
+    func meaningViewForMatch(meaning:String,
+                             search:String) -> some View {
+        let triple = splitFor(string: meaning,
+                              search: search)
+        HStack(alignment: .center, spacing: 0) {
+            Text(triple.0)
+            Text(triple.1)
+                .foregroundColor(.green)
+            Text(triple.2)
+        }
     }
     
     private var redundantList: some View {
@@ -46,11 +66,21 @@ struct WordView: View {
                             .fontWeight(.ultraLight)
                         Spacer()
                     }
+                    
                     VStack(alignment:.leading) {
                             ForEach(filteredFor(part: part),
                                     id:\.self) { word in
-                                Text(word.meaning)
-                                    .fontWeight(.ultraLight)
+                                
+                                if word.meaning.contains(provider.searchString) {
+                                    meaningViewForMatch(meaning: word.meaning,
+                                                        search: provider.searchString)
+                                }else {
+                                    Text(word.meaning)
+                                        .fontWeight(.ultraLight)
+                                }
+                                   
+                                   
+                                   
                             }
 
                     }

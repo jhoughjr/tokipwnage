@@ -26,8 +26,10 @@ struct WordListView: View {
     }
     
     private var searchField: some View {
-        TextField("Search", text: $provider.searchString,
+        TextField("Search",
+                  text: $provider.searchString,
                   prompt: Text("Search \($provider.category.wrappedValue.string())"))
+        
         .onChange(of: provider.searchString) { newValue in
             provider.loadSearch(s: newValue)
         }
@@ -47,7 +49,9 @@ struct WordListView: View {
         List {
             ForEach(provider.words, id:\.rawValue) { word in
                 if navigable {
-                    NavigationLink(word.rawValue, destination: WordView(word: word))
+                    NavigationLink(word.rawValue,
+                                   destination: WordView(word: word,
+                                                         provider: provider))
                 }else {
                     Text(word.rawValue)
                 }

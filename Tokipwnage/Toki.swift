@@ -284,6 +284,7 @@ public class Vocabulary {
             Set<PartsOfSpeech>(self.definitions.map({$0.partOfSpeech})).reversed().reversed()
         }
         
+
         case a
         case akesi
         case ala
