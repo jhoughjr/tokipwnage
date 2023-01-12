@@ -39,8 +39,11 @@ struct WordListView: View {
         HStack {
             Text("Words")
                 .font(.title)
-           NavigationLink(destination: PreferencesView(),
-                          label: {Image(systemName: "gear")})
+            Text("\(provider.words.count)")
+                .fontWeight(.ultraLight)
+            Spacer()
+            NavigationLink(destination: PreferencesView(),
+                           label: {Image(systemName: "gear")})
            
         }
     }
