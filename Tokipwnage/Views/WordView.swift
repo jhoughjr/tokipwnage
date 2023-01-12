@@ -43,7 +43,7 @@ struct WordView: View {
                              search:String) -> some View {
         let triple = splitFor(string: meaning,
                               search: search)
-        HStack(alignment: .center, spacing: 0) {
+        HStack(alignment: .top, spacing: 0) {
             Text(triple.0)
             Text(triple.1)
                 .foregroundColor(.green)
@@ -80,15 +80,19 @@ struct WordView: View {
                     id:\.self) { part in
                 
                 HStack(alignment:.top) {
+                    
                     VStack(alignment:.leading) {
                         Text(part.rawValue)
                             .bold()
-                        Text("\(filteredFor(part:part).count) \(filteredFor(part:part).count == 1 ? "meaning":"meanings")")
-                            .fontWeight(.ultraLight)
+                            .italic()
                         Spacer()
                     }
-                    
+                    .frame(width:120)
                     VStack(alignment:.leading) {
+                        Text("\(filteredFor(part:part).count) \(filteredFor(part:part).count == 1 ? "meaning":"meanings")")
+                            .fontWeight(.ultraLight)
+                        Divider()
+                            .frame(width: 80)
                         ForEach(filteredFor(part: part),
                                 id:\.self) { word in
                             
@@ -103,6 +107,7 @@ struct WordView: View {
                     Spacer()
                 }
                 .padding()
+                Divider()
             }
         }
     }

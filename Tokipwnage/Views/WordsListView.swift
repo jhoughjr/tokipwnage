@@ -52,6 +52,7 @@ struct WordListView: View {
                     NavigationLink(word.rawValue,
                                    destination: WordView(word: word,
                                                          provider: provider))
+                    
                 }else {
                     Text(word.rawValue)
                 }
@@ -67,6 +68,7 @@ struct WordListView: View {
             searchSelector
             list
         })
+        .padding()
     }
 }
 

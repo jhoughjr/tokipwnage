@@ -27,6 +27,7 @@ public class Vocabulary {
             case adjective
             case verb
             case preverb
+            case preposition
             case number
             
         }
@@ -273,9 +274,44 @@ public class Vocabulary {
                         Definition(.noun,"grass"),
                         Definition(.noun,"herb"),
                         Definition(.noun,"leaf"),
-
-
-]
+                        ]
+            case .ken:
+                return [Definition(.noun,"abillity"),
+                        Definition(.noun,"possibility"),
+                        Definition(.noun,"liberty"),
+                        Definition(.noun,"right", isDeprecated: true),
+                        Definition(.preverb,"can"),
+                        Definition(.preverb,"may"),
+                        Definition(.adjective,"possible"),
+                        Definition(.adjective,"ability", isDeprecated: true),
+                        ]
+            case .kepeken:
+                return [Definition(.noun, "use"),
+                        Definition(.noun, "pracice", isDeprecated: true),
+                        Definition(.verb, "to use"),
+                        Definition(.preposition,"using"),
+                        Definition(.preposition,"with help of")]
+            case .kijetesantakalu:
+                return [Definition(.noun, "racoon or other musteloid")]
+            case .kili:
+                return [Definition(.noun, "fruit"),
+                        Definition(.noun, "vegetable"),
+                        Definition(.noun, "mushrooms")]
+            case .kin:
+                return [Definition(.particle, "very"),
+                        Definition(.particle, "really"),
+                        Definition(.particle, "also")]
+            case .kipisi:
+                return [Definition(.verb, "to cut"),
+                        Definition(.verb, "to divide")]
+            case .kiwen:
+                return [Definition(.noun, "hard object"),
+                        Definition(.noun, "metal"),
+                        Definition(.noun, "stone"),
+                        Definition(.adjective, "hard"),
+                        Definition(.adjective, "metallic"),
+                        Definition(.adjective, "solid")]
+                
             }
         }
         
@@ -312,44 +348,20 @@ public class Vocabulary {
         case kalama
         case kama
         case kasi
+        case ken
+        case kepeken
+        case kijetesantakalu
+        case kili
+        case kin
+        case kipisi
+        case kiwen
+        
         /*
-                  
-         ken
 
-         noun: ability, possibility, (unconventional) right, liberty
-         adjective (unconventional): able, possible
-         pre-verb: can (do smth), may (do smth)
-         
-         kepeken
-
-         noun: use, (unconventional) practice
-         verb w/ obj: to use smth
-         preposition: (do smth) using, with the help of
-         kijetesantakalu (nimi ku suli)
-
-         noun: raccoon or other musteloid
-         This is one of the “joke words” created by Sonja Lang. It has become very popular among tokiponists, as has the sitelen pona character for it.
-
-         kili
-
-         noun: fruit, vegetable, mushroom
-         kin (nimi ku suli)
-
-         particle: very, really, also
-         In the first official book, this word was merged with “a”. However, many people use it separately from “a”. They would only use “a” to emphasize someone’s feelings.
-
-         kipisi (nimi ku suli)
-
-         verb: to cut, to divide
-         This is an old word that was not included in the first official book, but which many people still use. Those who want to only use lipu pu vocabulary might want to use “tu”, which can also be used as a verb to mean “to divide”, the same way “wan” means “to unite”.
-
-         kiwen
-
-         noun: hard object, metal, stone, solid
-         adjective: hard, metallic, solid
          ko
 
          noun: powder, clay, paste, semi-solid
+         
          kokosila (nimi ku suli)
 
          verb: to speak not in toki pona in an environment where others speak toki pona

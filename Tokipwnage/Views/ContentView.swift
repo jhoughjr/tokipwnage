@@ -14,9 +14,11 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            WordListView(provider: wordProvider, navigable: true)
+            WordListView(provider: wordProvider,
+                         navigable: true)
             .onAppear {
                 wordProvider.loadAllWords()
+
             }
         }
         .padding()        
