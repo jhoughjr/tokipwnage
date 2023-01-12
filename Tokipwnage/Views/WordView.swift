@@ -13,18 +13,33 @@ struct WordView: View {
     @ObservedObject var prefs = Preferences()
     @ObservedObject var provider:WordsProvider
     
-    func filteredFor(part:Vocabulary.Words.PartsOfSpeech) -> [Vocabulary.Words.Definition] {
+    private func filteredFor(part:Vocabulary.Words.PartsOfSpeech) -> [Vocabulary.Words.Definition] {
         word.definitions.filter({$0.partOfSpeech == part})
     }
     
-    func splitFor(string:String, search:String) -> (String,String,String) {
+    private func splitFor(string:String, search:String) -> (String,String,String) {
         let chunks = string.components(separatedBy: search)
         return (chunks.first!,search,chunks.last!)
-
+    }
+    
+    private let orderedPartsOfSpeech:[Vocabulary.Words.PartsOfSpeech] = [.noun,
+                                                                         .verb,
+                                                                         .preverb,
+                                                                         .particle,
+                                                                         .adjective,
+                                                                         .number]
+    func orderedParts(for word:Vocabulary.Words) -> [Vocabulary.Words.PartsOfSpeech] {
+        var o = [Vocabulary.Words.PartsOfSpeech]()
+        for part in orderedPartsOfSpeech {
+            if word.partsOfSpeech.contains(part) {
+                o.append(part)
+            }
+        }
+        return o
     }
     
     @ViewBuilder
-    func meaningViewForMatch(meaning:String,
+    private func meaningViewForMatch(meaning:String,
                              search:String) -> some View {
         let triple = splitFor(string: meaning,
                               search: search)
@@ -34,6 +49,12 @@ struct WordView: View {
                 .foregroundColor(.green)
             Text(triple.2)
         }
+    }
+    
+    @ViewBuilder
+    private func meaingViewfor(_ meaning:String) -> some View {
+        Text(meaning)
+            .fontWeight(.ultraLight)
     }
     
     private var redundantList: some View {
@@ -55,7 +76,7 @@ struct WordView: View {
     private var partOfSpeechSortedList: some View {
         
         List {
-            ForEach(word.partsOfSpeech,
+            ForEach(orderedParts(for: word),
                     id:\.self) { part in
                 
                 HStack(alignment:.top) {
@@ -68,21 +89,16 @@ struct WordView: View {
                     }
                     
                     VStack(alignment:.leading) {
-                            ForEach(filteredFor(part: part),
-                                    id:\.self) { word in
-                                
-                                if word.meaning.contains(provider.searchString) {
-                                    meaningViewForMatch(meaning: word.meaning,
-                                                        search: provider.searchString)
-                                }else {
-                                    Text(word.meaning)
-                                        .fontWeight(.ultraLight)
-                                }
-                                   
-                                   
-                                   
+                        ForEach(filteredFor(part: part),
+                                id:\.self) { word in
+                            
+                            if word.meaning.contains(provider.searchString) {
+                                meaningViewForMatch(meaning: word.meaning,
+                                                    search: provider.searchString)
+                            }else {
+                                meaingViewfor(word.meaning)
                             }
-
+                        }
                     }
                     Spacer()
                 }
