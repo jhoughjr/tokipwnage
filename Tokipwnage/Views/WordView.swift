@@ -79,35 +79,32 @@ struct WordView: View {
             ForEach(orderedParts(for: word),
                     id:\.self) { part in
                 
-                HStack(alignment:.top) {
+  
                     
-                    VStack(alignment:.leading) {
+                    VStack(alignment:.leading, spacing: 8) {
                         Text(part.rawValue)
                             .bold()
                             .italic()
-                        Spacer()
-                    }
-                    .frame(width:120)
-                    VStack(alignment:.leading) {
-                        Text("\(filteredFor(part:part).count) \(filteredFor(part:part).count == 1 ? "meaning":"meanings")")
-                            .fontWeight(.ultraLight)
-                        Divider()
-                            .frame(width: 80)
-                        ForEach(filteredFor(part: part),
-                                id:\.self) { word in
-                            
-                            if word.meaning.contains(provider.searchString) {
-                                meaningViewForMatch(meaning: word.meaning,
-                                                    search: provider.searchString)
-                            }else {
-                                meaingViewfor(word.meaning)
+                        VStack(alignment:.leading) {
+                            Text("\(filteredFor(part:part).count) \(filteredFor(part:part).count == 1 ? "meaning":"meanings")")
+                                .fontWeight(.ultraLight)
+                            Divider()
+                                .frame(width: 80)
+                            ForEach(filteredFor(part: part),
+                                    id:\.self) { word in
+                                
+                                if word.meaning.contains(provider.searchString) && provider.category == .meanings {
+                                    meaningViewForMatch(meaning: word.meaning,
+                                                        search: provider.searchString)
+                                }else {
+                                    meaingViewfor(word.meaning)
+                                }
                             }
                         }
+                        .padding([.leading], 24)
                     }
-                    Spacer()
-                }
-                .padding()
-                Divider()
+                    .padding([.leading],0)
+                                   
             }
         }
     }
@@ -145,7 +142,6 @@ struct WordView: View {
             Divider()
             partOfSpeechSortedList
         }
-        .padding()
         .onAppear {
             if prefs.autoSpeak {
                 speaker.speak(word)
