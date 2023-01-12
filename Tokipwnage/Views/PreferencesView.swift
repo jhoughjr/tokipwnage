@@ -29,8 +29,11 @@ struct PreferencesView: View {
         VStack(alignment: .leading,
                content: {
             Text("Voices")
-            Toggle(isOn: prefs.$autoSpeak) {
-                Text("AutoSpeak")
+            HStack {
+                Toggle(isOn: prefs.$autoSpeak) {
+                    Text("AutoSpeak")
+                }
+                Text("Note that es-MX voices are best at approximating the correct pronunciation and using other voices may sound incorrect.")
             }
             List {
                 ForEach(AVSpeechSynthesisVoice.speechVoices(), id:\.identifier) { voice in
