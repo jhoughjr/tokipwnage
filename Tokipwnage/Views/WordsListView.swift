@@ -6,6 +6,15 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
+
+private func selectionHaptic() {
+    #if os(iOS)
+    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+    #endif
+}
 
 struct WordListView: View {
 
@@ -61,6 +70,7 @@ struct WordListView: View {
                 ForEach(Vocabulary.Words.PartsOfSpeech.allCases, id: \.self) { part in
                     let active = activeFilters.contains(part)
                     Button {
+                        selectionHaptic()
                         if active {
                             activeFilters.remove(part)
                         } else {
@@ -71,6 +81,7 @@ struct WordListView: View {
                             Circle()
                                 .fill(active ? Color.white : part.color)
                                 .frame(width: 7, height: 7)
+                                .accessibilityHidden(true)
                             Text(part.rawValue)
                                 .font(.caption2)
                         }
@@ -113,6 +124,7 @@ struct WordListView: View {
                     Circle()
                         .fill(part.color)
                         .frame(width: 8, height: 8)
+                        .accessibilityLabel(Text(part.rawValue))
                 }
             }
         }

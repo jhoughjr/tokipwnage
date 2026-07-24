@@ -72,6 +72,7 @@ struct WordView: View {
                         Circle()
                             .fill(part.color)
                             .frame(width: 10, height: 10)
+                            .accessibilityHidden(true)
                         Text(part.rawValue)
                             .bold()
                             .italic()

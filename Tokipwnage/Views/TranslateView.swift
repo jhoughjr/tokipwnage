@@ -4,6 +4,15 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
+
+private func selectionHaptic() {
+    #if os(iOS)
+    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+    #endif
+}
 
 struct WordSlot: Identifiable {
     let id = UUID()
@@ -121,6 +130,7 @@ struct TranslateView: View {
                             Circle()
                                 .fill(part.color)
                                 .frame(width: 6, height: 6)
+                                .accessibilityLabel(Text(part.rawValue))
                         }
                     }
                     .frame(width: 44)
@@ -284,6 +294,7 @@ struct TranslateView: View {
                     ForEach(filteredTokiWords, id: \.rawValue) { word in
                         let selected = selectedTokiWords.contains(word)
                         Button {
+                            selectionHaptic()
                             if selected { selectedTokiWords.removeAll { $0 == word } }
                             else { selectedTokiWords.append(word) }
                         } label: {
