@@ -28,9 +28,7 @@ struct WordSlot: Identifiable {
             .map { $0.trimmingCharacters(in: .punctuationCharacters).lowercased() }
             .filter { !$0.isEmpty && !stopWords.contains($0) }
             .map { english in
-                let matches = Vocabulary.Words.allCases.filter { word in
-                    word.definitions.contains { $0.meaning.localizedCaseInsensitiveContains(english) }
-                }.sorted { $0.rawValue < $1.rawValue }
+                let matches = Vocabulary.Words.words(forEnglish: english)
 
                 return WordSlot(
                     englishWord: english,
@@ -151,6 +149,30 @@ struct TranslateView: View {
         .padding(.vertical, 2)
     }
 
+    @ViewBuilder
+    private var speakControl: some View {
+        if speaker.isSpeaking {
+            Button {
+                speaker.stop()
+            } label: {
+                Image(systemName: "stop.fill")
+            }
+            .buttonStyle(.plain)
+        } else {
+            Button {
+                if speaker.prefs.selectedVoice.isEmpty {
+                    showVoiceAlert = true
+                } else {
+                    speaker.speak(builtPhrase.map(\.rawValue).joined(separator: " "))
+                }
+            } label: {
+                Image(systemName: "speaker.wave.3")
+            }
+            .buttonStyle(.plain)
+            .disabled(builtPhrase.isEmpty)
+        }
+    }
+
     private var englishToTokiView: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -160,17 +182,7 @@ struct TranslateView: View {
                 Button("Go") { translate() }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.small)
-                Button {
-                    if speaker.prefs.selectedVoice.isEmpty {
-                        showVoiceAlert = true
-                    } else {
-                        speaker.speak(builtPhrase.map(\.rawValue).joined(separator: " "))
-                    }
-                } label: {
-                    Image(systemName: "speaker.wave.3")
-                }
-                .buttonStyle(.plain)
-                .disabled(builtPhrase.isEmpty)
+                speakControl
             }
 
             if !wordSlots.isEmpty {
