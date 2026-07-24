@@ -29,7 +29,8 @@ public class Vocabulary {
             case preverb
             case preposition
             case number
-            
+            case interjection
+
         }
         
         /// Composes of the part of speech and the meanings o words.
@@ -311,7 +312,660 @@ public class Vocabulary {
                         Definition(.adjective, "hard"),
                         Definition(.adjective, "metallic"),
                         Definition(.adjective, "solid")]
-                
+            case .ko:
+                return [Definition(.noun, "powder"),
+                        Definition(.noun, "clay"),
+                        Definition(.noun, "paste"),
+                        Definition(.noun, "semi-solid")]
+            case .kokosila:
+                return [Definition(.verb, "to speak a language other than toki pona in a toki pona environment")]
+            case .kon:
+                return [Definition(.noun, "air"),
+                        Definition(.noun, "essence"),
+                        Definition(.noun, "spirit"),
+                        Definition(.noun, "gas", isDeprecated: true),
+                        Definition(.adjective, "invisible"),
+                        Definition(.adjective, "ephemeral")]
+            case .ku:
+                return [Definition(.noun, "the Toki Pona Dictionary by Sonja Lang"),
+                        Definition(.verb, "to interact with ku")]
+            case .kule:
+                return [Definition(.noun, "color"),
+                        Definition(.noun, "gender", isDeprecated: true),
+                        Definition(.adjective, "colorful"),
+                        Definition(.adjective, "painted"),
+                        Definition(.verb, "to paint a color")]
+            case .kulupu:
+                return [Definition(.noun, "group"),
+                        Definition(.noun, "community"),
+                        Definition(.noun, "company"),
+                        Definition(.noun, "society"),
+                        Definition(.noun, "nation"),
+                        Definition(.noun, "tribe"),
+                        Definition(.adjective, "communal"),
+                        Definition(.adjective, "social")]
+            case .kute:
+                return [Definition(.noun, "ear"),
+                        Definition(.noun, "hearing"),
+                        Definition(.adjective, "...-sounding"),
+                        Definition(.verb, "to hear"),
+                        Definition(.verb, "to listen"),
+                        Definition(.verb, "to obey")]
+            case .la:
+                return [Definition(.particle, "if/when (introduces context)")]
+            case .lanpan:
+                return [Definition(.verb, "to get"),
+                        Definition(.verb, "to take"),
+                        Definition(.verb, "to steal")]
+            case .lape:
+                return [Definition(.noun, "sleep"),
+                        Definition(.noun, "rest"),
+                        Definition(.adjective, "sleeping"),
+                        Definition(.adjective, "restful"),
+                        Definition(.verb, "to sleep"),
+                        Definition(.verb, "to rest")]
+            case .laso:
+                return [Definition(.noun, "the color blue"),
+                        Definition(.noun, "the color green"),
+                        Definition(.adjective, "blue"),
+                        Definition(.adjective, "green"),
+                        Definition(.verb, "to color something blue/green")]
+            case .lawa:
+                return [Definition(.noun, "head"),
+                        Definition(.noun, "mind"),
+                        Definition(.adjective, "main"),
+                        Definition(.adjective, "primary"),
+                        Definition(.adjective, "controlling"),
+                        Definition(.adjective, "ruling"),
+                        Definition(.verb, "to head"),
+                        Definition(.verb, "to control"),
+                        Definition(.verb, "to direct"),
+                        Definition(.verb, "to guide"),
+                        Definition(.verb, "to lead"),
+                        Definition(.verb, "to own"),
+                        Definition(.verb, "to rule")]
+            case .leko:
+                return [Definition(.noun, "square"),
+                        Definition(.noun, "block"),
+                        Definition(.noun, "stairs")]
+            case .len:
+                return [Definition(.noun, "cloth"),
+                        Definition(.noun, "clothes"),
+                        Definition(.noun, "fabric"),
+                        Definition(.noun, "layer of privacy"),
+                        Definition(.adjective, "clothed"),
+                        Definition(.adjective, "made of cloth/fabric"),
+                        Definition(.verb, "to clothe"),
+                        Definition(.verb, "to provide a layer of privacy")]
+            case .lete:
+                return [Definition(.noun, "cold"),
+                        Definition(.adjective, "cold"),
+                        Definition(.adjective, "cool"),
+                        Definition(.adjective, "raw"),
+                        Definition(.adjective, "uncooked"),
+                        Definition(.verb, "to cool down")]
+            case .li:
+                return [Definition(.particle, "between subject and verb/adjective")]
+            case .lili:
+                return [Definition(.noun, "smallness"),
+                        Definition(.adjective, "small"),
+                        Definition(.adjective, "few"),
+                        Definition(.adjective, "young"),
+                        Definition(.verb, "to shrink")]
+            case .linja:
+                return [Definition(.noun, "long flexible object"),
+                        Definition(.noun, "string"),
+                        Definition(.noun, "rope"),
+                        Definition(.noun, "hair")]
+            case .lipu:
+                return [Definition(.noun, "flat object"),
+                        Definition(.noun, "book"),
+                        Definition(.noun, "document"),
+                        Definition(.noun, "paper"),
+                        Definition(.noun, "page"),
+                        Definition(.noun, "record"),
+                        Definition(.noun, "website"),
+                        Definition(.adjective, "flat"),
+                        Definition(.adjective, "lipu-like")]
+            case .loje:
+                return [Definition(.noun, "the color red"),
+                        Definition(.adjective, "red"),
+                        Definition(.verb, "to color something red")]
+            case .lon:
+                return [Definition(.noun, "truth"),
+                        Definition(.noun, "life"),
+                        Definition(.noun, "existence"),
+                        Definition(.adjective, "real"),
+                        Definition(.adjective, "true"),
+                        Definition(.adjective, "present"),
+                        Definition(.adjective, "existing"),
+                        Definition(.verb, "is true"),
+                        Definition(.verb, "exists"),
+                        Definition(.preposition, "in"),
+                        Definition(.preposition, "at"),
+                        Definition(.preposition, "on")]
+            case .luka:
+                return [Definition(.noun, "hand"),
+                        Definition(.noun, "arm"),
+                        Definition(.number, "5")]
+            case .lukin:
+                return [Definition(.noun, "eye"),
+                        Definition(.noun, "vision"),
+                        Definition(.adjective, "...-looking"),
+                        Definition(.adjective, "visual"),
+                        Definition(.verb, "to look"),
+                        Definition(.verb, "to see"),
+                        Definition(.verb, "to read"),
+                        Definition(.preverb, "to seek to do something")]
+            case .lupa:
+                return [Definition(.noun, "hole"),
+                        Definition(.noun, "door"),
+                        Definition(.noun, "orifice"),
+                        Definition(.noun, "window")]
+            case .ma:
+                return [Definition(.noun, "earth"),
+                        Definition(.noun, "land"),
+                        Definition(.noun, "outdoors"),
+                        Definition(.noun, "territory"),
+                        Definition(.noun, "country")]
+            case .mama:
+                return [Definition(.noun, "parent"),
+                        Definition(.noun, "ancestor"),
+                        Definition(.noun, "creator"),
+                        Definition(.noun, "origin"),
+                        Definition(.noun, "caretaker"),
+                        Definition(.verb, "to create"),
+                        Definition(.verb, "to parent"),
+                        Definition(.verb, "to take care of")]
+            case .mani:
+                return [Definition(.noun, "money"),
+                        Definition(.noun, "large domesticated animal"),
+                        Definition(.adjective, "wealthy", isDeprecated: true)]
+            case .meli:
+                return [Definition(.noun, "woman"),
+                        Definition(.noun, "female"),
+                        Definition(.noun, "wife"),
+                        Definition(.adjective, "feminine")]
+            case .meso:
+                return [Definition(.noun, "middle"),
+                        Definition(.noun, "center"),
+                        Definition(.adjective, "average"),
+                        Definition(.adjective, "moderate"),
+                        Definition(.adjective, "mediocre")]
+            case .mi:
+                return [Definition(.noun, "I, me"),
+                        Definition(.noun, "we, us"),
+                        Definition(.adjective, "my, our")]
+            case .mije:
+                return [Definition(.noun, "man"),
+                        Definition(.noun, "male"),
+                        Definition(.noun, "husband"),
+                        Definition(.adjective, "masculine")]
+            case .misikeke:
+                return [Definition(.noun, "medicine"),
+                        Definition(.noun, "cure"),
+                        Definition(.adjective, "medicinal"),
+                        Definition(.verb, "to cure")]
+            case .moku:
+                return [Definition(.noun, "food"),
+                        Definition(.adjective, "edible"),
+                        Definition(.adjective, "of food"),
+                        Definition(.verb, "to eat"),
+                        Definition(.verb, "to drink"),
+                        Definition(.verb, "to swallow")]
+            case .moli:
+                return [Definition(.noun, "death"),
+                        Definition(.adjective, "dead"),
+                        Definition(.adjective, "dying"),
+                        Definition(.verb, "to kill")]
+            case .monsi:
+                return [Definition(.noun, "back"),
+                        Definition(.noun, "behind"),
+                        Definition(.noun, "rear"),
+                        Definition(.noun, "butt"),
+                        Definition(.adjective, "back"),
+                        Definition(.adjective, "rear")]
+            case .monsuta:
+                return [Definition(.noun, "fear"),
+                        Definition(.noun, "monster"),
+                        Definition(.adjective, "scary"),
+                        Definition(.adjective, "monstrous"),
+                        Definition(.verb, "to scare"),
+                        Definition(.verb, "to be afraid of")]
+            case .mu:
+                return [Definition(.interjection, "any animal sound")]
+            case .mun:
+                return [Definition(.noun, "moon"),
+                        Definition(.noun, "star"),
+                        Definition(.noun, "night sky object"),
+                        Definition(.adjective, "lunar"),
+                        Definition(.adjective, "stellar")]
+            case .musi:
+                return [Definition(.noun, "game"),
+                        Definition(.noun, "art"),
+                        Definition(.adjective, "entertaining"),
+                        Definition(.adjective, "artistic"),
+                        Definition(.adjective, "amusing"),
+                        Definition(.verb, "to amuse"),
+                        Definition(.verb, "to play"),
+                        Definition(.verb, "to have fun")]
+            case .mute:
+                return [Definition(.noun, "quantity"),
+                        Definition(.adjective, "many"),
+                        Definition(.adjective, "more"),
+                        Definition(.number, "3 or more"),
+                        Definition(.number, "20")]
+            case .n:
+                return [Definition(.interjection, "um..., hm...")]
+            case .namako:
+                return [Definition(.noun, "spice"),
+                        Definition(.noun, "addition"),
+                        Definition(.adjective, "additional"),
+                        Definition(.adjective, "extra"),
+                        Definition(.verb, "to add"),
+                        Definition(.verb, "to spice up")]
+            case .nanpa:
+                return [Definition(.noun, "number"),
+                        Definition(.adjective, "-th (ordinal indicator)"),
+                        Definition(.adjective, "mathematical"),
+                        Definition(.adjective, "numeric")]
+            case .nasa:
+                return [Definition(.adjective, "weird"),
+                        Definition(.adjective, "unusual"),
+                        Definition(.adjective, "strange"),
+                        Definition(.adjective, "drunk")]
+            case .nasin:
+                return [Definition(.noun, "path"),
+                        Definition(.noun, "road"),
+                        Definition(.noun, "street"),
+                        Definition(.noun, "directive"),
+                        Definition(.noun, "way"),
+                        Definition(.noun, "custom"),
+                        Definition(.adjective, "of the way/custom"),
+                        Definition(.verb, "to guide"),
+                        Definition(.verb, "to show the path")]
+            case .nena:
+                return [Definition(.noun, "hill"),
+                        Definition(.noun, "mountain"),
+                        Definition(.noun, "button"),
+                        Definition(.noun, "bump"),
+                        Definition(.noun, "nose"),
+                        Definition(.adjective, "hilly"),
+                        Definition(.adjective, "mountainous"),
+                        Definition(.adjective, "bumpy")]
+            case .ni:
+                return [Definition(.noun, "this"),
+                        Definition(.noun, "that"),
+                        Definition(.adjective, "this"),
+                        Definition(.adjective, "that")]
+            case .nimi:
+                return [Definition(.noun, "word"),
+                        Definition(.noun, "name")]
+            case .noka:
+                return [Definition(.noun, "foot"),
+                        Definition(.noun, "leg"),
+                        Definition(.noun, "bottom"),
+                        Definition(.noun, "lower part"),
+                        Definition(.noun, "under")]
+            case .o:
+                return [Definition(.particle, "addressing people"),
+                        Definition(.particle, "commands")]
+            case .oko:
+                return [Definition(.noun, "eye")]
+            case .olin:
+                return [Definition(.noun, "love"),
+                        Definition(.noun, "compassion"),
+                        Definition(.noun, "affection"),
+                        Definition(.noun, "respect"),
+                        Definition(.adjective, "loved"),
+                        Definition(.adjective, "favorite"),
+                        Definition(.adjective, "respected"),
+                        Definition(.verb, "to love"),
+                        Definition(.verb, "to respect")]
+            case .ona:
+                return [Definition(.noun, "he, she, they, it"),
+                        Definition(.adjective, "his, her, their, its")]
+            case .open:
+                return [Definition(.noun, "start"),
+                        Definition(.noun, "beginning"),
+                        Definition(.adjective, "initial"),
+                        Definition(.adjective, "starting"),
+                        Definition(.verb, "to start"),
+                        Definition(.verb, "to open"),
+                        Definition(.verb, "to turn on"),
+                        Definition(.preverb, "to begin doing something")]
+            case .pakala:
+                return [Definition(.noun, "damage"),
+                        Definition(.noun, "mistake"),
+                        Definition(.adjective, "broken"),
+                        Definition(.adjective, "wrong"),
+                        Definition(.verb, "to break"),
+                        Definition(.verb, "to make mistakes"),
+                        Definition(.particle, "generic curse")]
+            case .pali:
+                return [Definition(.noun, "work"),
+                        Definition(.noun, "labor"),
+                        Definition(.adjective, "working"),
+                        Definition(.verb, "to work on"),
+                        Definition(.verb, "to make")]
+            case .palisa:
+                return [Definition(.noun, "long solid object"),
+                        Definition(.noun, "branch"),
+                        Definition(.noun, "stick"),
+                        Definition(.adjective, "long")]
+            case .pan:
+                return [Definition(.noun, "bread"),
+                        Definition(.noun, "grain"),
+                        Definition(.noun, "corn"),
+                        Definition(.noun, "rice"),
+                        Definition(.noun, "pizza")]
+            case .pana:
+                return [Definition(.adjective, "given", isDeprecated: true),
+                        Definition(.adjective, "sent", isDeprecated: true),
+                        Definition(.adjective, "released", isDeprecated: true),
+                        Definition(.verb, "to give"),
+                        Definition(.verb, "to send"),
+                        Definition(.verb, "to emit"),
+                        Definition(.verb, "to release")]
+            case .pi:
+                return [Definition(.particle, "of (regroups two or more modifiers)")]
+            case .pilin:
+                return [Definition(.noun, "heart"),
+                        Definition(.noun, "feeling"),
+                        Definition(.noun, "touch"),
+                        Definition(.noun, "sense"),
+                        Definition(.adjective, "feeling"),
+                        Definition(.adjective, "touch-based"),
+                        Definition(.verb, "to touch"),
+                        Definition(.verb, "to think"),
+                        Definition(.verb, "to feel")]
+            case .pimeja:
+                return [Definition(.noun, "the color black"),
+                        Definition(.noun, "shadow"),
+                        Definition(.adjective, "black"),
+                        Definition(.adjective, "dark"),
+                        Definition(.verb, "to color something black"),
+                        Definition(.verb, "to cast a shadow")]
+            case .pini:
+                return [Definition(.noun, "end"),
+                        Definition(.noun, "finish"),
+                        Definition(.adjective, "final"),
+                        Definition(.adjective, "completed"),
+                        Definition(.adjective, "finished"),
+                        Definition(.adjective, "past"),
+                        Definition(.verb, "to end"),
+                        Definition(.verb, "to finish"),
+                        Definition(.verb, "to close"),
+                        Definition(.preverb, "to stop doing something")]
+            case .pipi:
+                return [Definition(.noun, "insect"),
+                        Definition(.noun, "bug")]
+            case .poka:
+                return [Definition(.noun, "hip"),
+                        Definition(.noun, "side"),
+                        Definition(.noun, "nearby area"),
+                        Definition(.adjective, "neighboring"),
+                        Definition(.adjective, "nearby"),
+                        Definition(.adjective, "at one's side")]
+            case .poki:
+                return [Definition(.noun, "box"),
+                        Definition(.noun, "container"),
+                        Definition(.noun, "bowl"),
+                        Definition(.noun, "cup"),
+                        Definition(.noun, "drawer"),
+                        Definition(.verb, "to put in a box", isDeprecated: true)]
+            case .pona:
+                return [Definition(.noun, "good"),
+                        Definition(.noun, "simplicity"),
+                        Definition(.adjective, "good"),
+                        Definition(.adjective, "simple"),
+                        Definition(.adjective, "friendly"),
+                        Definition(.adjective, "peaceful"),
+                        Definition(.verb, "to improve"),
+                        Definition(.verb, "to fix")]
+            case .pu:
+                return [Definition(.noun, "the official toki pona book"),
+                        Definition(.adjective, "as told in the official toki pona book"),
+                        Definition(.verb, "interacting with the official toki pona book")]
+            case .sama:
+                return [Definition(.noun, "similarity"),
+                        Definition(.noun, "sibling"),
+                        Definition(.adjective, "similar"),
+                        Definition(.adjective, "like"),
+                        Definition(.preposition, "as"),
+                        Definition(.preposition, "like")]
+            case .seli:
+                return [Definition(.noun, "heat"),
+                        Definition(.noun, "warmth"),
+                        Definition(.noun, "chemical reaction"),
+                        Definition(.noun, "heat source"),
+                        Definition(.adjective, "warm"),
+                        Definition(.adjective, "hot"),
+                        Definition(.verb, "to heat")]
+            case .selo:
+                return [Definition(.noun, "outer form"),
+                        Definition(.noun, "outer layer"),
+                        Definition(.noun, "shell"),
+                        Definition(.noun, "skin"),
+                        Definition(.noun, "boundary"),
+                        Definition(.adjective, "outer")]
+            case .seme:
+                return [Definition(.particle, "what? which? (for questions)")]
+            case .sewi:
+                return [Definition(.noun, "area above"),
+                        Definition(.noun, "top"),
+                        Definition(.noun, "highest part"),
+                        Definition(.noun, "sky"),
+                        Definition(.noun, "god"),
+                        Definition(.adjective, "high"),
+                        Definition(.adjective, "above"),
+                        Definition(.adjective, "divine"),
+                        Definition(.adjective, "sacred")]
+            case .sijelo:
+                return [Definition(.noun, "body"),
+                        Definition(.noun, "physical state"),
+                        Definition(.noun, "torso"),
+                        Definition(.adjective, "physical"),
+                        Definition(.adjective, "of the body")]
+            case .sike:
+                return [Definition(.noun, "circle"),
+                        Definition(.noun, "ball"),
+                        Definition(.noun, "cycle"),
+                        Definition(.noun, "wheel"),
+                        Definition(.noun, "year"),
+                        Definition(.adjective, "round"),
+                        Definition(.adjective, "circular"),
+                        Definition(.adjective, "spherical"),
+                        Definition(.adjective, "of one year"),
+                        Definition(.verb, "to make a circle around"),
+                        Definition(.verb, "to surround")]
+            case .sin:
+                return [Definition(.noun, "novelty"),
+                        Definition(.noun, "addition"),
+                        Definition(.adjective, "new"),
+                        Definition(.adjective, "additional"),
+                        Definition(.adjective, "fresh"),
+                        Definition(.adjective, "extra"),
+                        Definition(.verb, "to add"),
+                        Definition(.verb, "to update")]
+            case .sina:
+                return [Definition(.noun, "you"),
+                        Definition(.adjective, "your")]
+            case .sinpin:
+                return [Definition(.noun, "face"),
+                        Definition(.noun, "foremost part"),
+                        Definition(.noun, "front"),
+                        Definition(.noun, "wall"),
+                        Definition(.adjective, "of face"),
+                        Definition(.adjective, "foremost")]
+            case .sitelen:
+                return [Definition(.noun, "symbol"),
+                        Definition(.noun, "image"),
+                        Definition(.noun, "writing"),
+                        Definition(.adjective, "symbolic"),
+                        Definition(.adjective, "written"),
+                        Definition(.adjective, "recorded"),
+                        Definition(.verb, "to write"),
+                        Definition(.verb, "to draw"),
+                        Definition(.verb, "to record")]
+            case .soko:
+                return [Definition(.noun, "mushroom"),
+                        Definition(.noun, "fungus")]
+            case .sona:
+                return [Definition(.noun, "knowledge"),
+                        Definition(.noun, "information"),
+                        Definition(.adjective, "known"),
+                        Definition(.verb, "to know"),
+                        Definition(.preverb, "to know how to do something")]
+            case .soweli:
+                return [Definition(.noun, "land mammal"),
+                        Definition(.noun, "animal")]
+            case .suli:
+                return [Definition(.noun, "size"),
+                        Definition(.noun, "greatness"),
+                        Definition(.adjective, "big"),
+                        Definition(.adjective, "heavy"),
+                        Definition(.adjective, "tall"),
+                        Definition(.adjective, "great"),
+                        Definition(.adjective, "important"),
+                        Definition(.adjective, "adult"),
+                        Definition(.verb, "to grow")]
+            case .suno:
+                return [Definition(.noun, "sun"),
+                        Definition(.noun, "light"),
+                        Definition(.noun, "brightness"),
+                        Definition(.noun, "light source"),
+                        Definition(.adjective, "solar"),
+                        Definition(.adjective, "bright"),
+                        Definition(.verb, "to light"),
+                        Definition(.verb, "to shine")]
+            case .supa:
+                return [Definition(.noun, "horizontal surface")]
+            case .suwi:
+                return [Definition(.noun, "sweets", isDeprecated: true),
+                        Definition(.noun, "fragrances", isDeprecated: true),
+                        Definition(.adjective, "sweet"),
+                        Definition(.adjective, "fragrant"),
+                        Definition(.adjective, "cute"),
+                        Definition(.adjective, "adorable")]
+            case .tan:
+                return [Definition(.noun, "cause"),
+                        Definition(.noun, "reason"),
+                        Definition(.noun, "origin"),
+                        Definition(.adjective, "original"),
+                        Definition(.verb, "to cause", isDeprecated: true),
+                        Definition(.preposition, "from"),
+                        Definition(.preposition, "because of")]
+            case .taso:
+                return [Definition(.particle, "but"),
+                        Definition(.particle, "however"),
+                        Definition(.adjective, "only")]
+            case .tawa:
+                return [Definition(.noun, "movement"),
+                        Definition(.adjective, "moving"),
+                        Definition(.verb, "to move"),
+                        Definition(.preposition, "to"),
+                        Definition(.preposition, "for"),
+                        Definition(.preposition, "from the perspective of")]
+            case .telo:
+                return [Definition(.noun, "water"),
+                        Definition(.noun, "fluid"),
+                        Definition(.noun, "liquid"),
+                        Definition(.adjective, "wet"),
+                        Definition(.adjective, "fluid"),
+                        Definition(.adjective, "liquid"),
+                        Definition(.verb, "to water"),
+                        Definition(.verb, "to clean")]
+            case .tenpo:
+                return [Definition(.noun, "time"),
+                        Definition(.noun, "moment"),
+                        Definition(.noun, "occasion"),
+                        Definition(.adjective, "temporal")]
+            case .toki:
+                return [Definition(.noun, "speech"),
+                        Definition(.noun, "conversation"),
+                        Definition(.noun, "language"),
+                        Definition(.adjective, "verbal"),
+                        Definition(.adjective, "conversational"),
+                        Definition(.verb, "to speak"),
+                        Definition(.verb, "to talk"),
+                        Definition(.verb, "to use language"),
+                        Definition(.verb, "to think")]
+            case .tomo:
+                return [Definition(.noun, "home"),
+                        Definition(.noun, "building"),
+                        Definition(.noun, "structure"),
+                        Definition(.noun, "indoor space"),
+                        Definition(.noun, "room"),
+                        Definition(.adjective, "indoor")]
+            case .tonsi:
+                return [Definition(.noun, "non-binary person"),
+                        Definition(.noun, "trans person"),
+                        Definition(.adjective, "gender-nonconforming"),
+                        Definition(.adjective, "trans")]
+            case .tu:
+                return [Definition(.number, "2"),
+                        Definition(.noun, "divide"),
+                        Definition(.adjective, "divided"),
+                        Definition(.verb, "to divide")]
+            case .unpa:
+                return [Definition(.noun, "sex"),
+                        Definition(.adjective, "sexual"),
+                        Definition(.verb, "to have sex with")]
+            case .uta:
+                return [Definition(.noun, "mouth"),
+                        Definition(.noun, "lips"),
+                        Definition(.adjective, "oral")]
+            case .utala:
+                return [Definition(.noun, "fight"),
+                        Definition(.noun, "battle"),
+                        Definition(.noun, "challenge"),
+                        Definition(.noun, "war"),
+                        Definition(.adjective, "aggressive"),
+                        Definition(.adjective, "warlike"),
+                        Definition(.verb, "to fight"),
+                        Definition(.verb, "to battle"),
+                        Definition(.verb, "to challenge")]
+            case .walo:
+                return [Definition(.noun, "the color white"),
+                        Definition(.adjective, "white"),
+                        Definition(.adjective, "bright"),
+                        Definition(.verb, "to color something white")]
+            case .wan:
+                return [Definition(.number, "1"),
+                        Definition(.noun, "part"),
+                        Definition(.adjective, "united"),
+                        Definition(.adjective, "married"),
+                        Definition(.verb, "to unite"),
+                        Definition(.verb, "to marry")]
+            case .waso:
+                return [Definition(.noun, "bird"),
+                        Definition(.noun, "flying creature")]
+            case .wawa:
+                return [Definition(.noun, "strength"),
+                        Definition(.noun, "power"),
+                        Definition(.noun, "energy"),
+                        Definition(.adjective, "strong"),
+                        Definition(.adjective, "powerful"),
+                        Definition(.adjective, "energetic")]
+            case .weka:
+                return [Definition(.noun, "absence"),
+                        Definition(.noun, "remoteness"),
+                        Definition(.adjective, "absent"),
+                        Definition(.adjective, "away"),
+                        Definition(.adjective, "remote"),
+                        Definition(.verb, "to remove"),
+                        Definition(.verb, "to get rid of")]
+            case .wile:
+                return [Definition(.noun, "want"),
+                        Definition(.noun, "need"),
+                        Definition(.noun, "desire"),
+                        Definition(.adjective, "desired"),
+                        Definition(.adjective, "needed"),
+                        Definition(.adjective, "required"),
+                        Definition(.verb, "to want"),
+                        Definition(.preverb, "to want to do something")]
+
             }
         }
         
@@ -355,501 +1009,110 @@ public class Vocabulary {
         case kin
         case kipisi
         case kiwen
-        
-        /*
-
-         ko
-
-         noun: powder, clay, paste, semi-solid
-         
-         kokosila (nimi ku suli)
-
-         verb: to speak not in toki pona in an environment where others speak toki pona
-         This word is taken from an Esperanto verb “krokodili”, which in turn means to not speak Esperanto in an Esperanto environment.
-
-         kon
-
-         noun: air, essence, spirit, (unconventional) gas
-         adjective: invisible, ephemeral, (unconventional) gaseous
-         ku (nimi ku suli)
-
-         noun: the Toki Pona Dictionary by Sonja Lang
-         verb: to interact with ku
-         Much like interacting with the first official toki pona book was given the word “pu”, so does the second book with “ku”. In fact, in lipu ku, words “ju”, “lu”, “nu”, “su” and “u” are all listed as “(word reserved for future use by Sonja Lang)”, presumably to be given to the next five official toki pona books that (in my opinion) should be created in the future.
-
-         kule
-
-         noun: color, (rare) gender
-         adjective: colorful, painted
-         verb: to paint smth a color
-         kulupu
-
-         noun: group, community, company, society, nation, tribe
-         adjective: communal, social
-         kute
-
-         noun: ear, hearing
-         adjective: …-sounding
-         verb: to hear, to listen, to obey
-         la
-
-         particle: “if/when” (introduces context)
-         lanpan (nimi ku suli)
-
-         verb: to get, to take, to steal
-         Without this word, the typical way to express getting or taking something would be “kama jo e …” (to come into possession of …), possibly with additional adjectives like “ike” or “utala”. The word is famously used in the title of “lanpan pan”, the toki pona translation/summary of Peter Kropotkin’s “The Conquest of Bread”.
-
-         lape
-
-         noun: sleep, rest
-         adjective: sleeping, restful
-         verb: to sleep, to rest
-         laso
-
-         noun/adjective: (the color) blue, green (and its shades)
-         verb: to color something blue/green
-         lawa
-
-         noun: head, mind
-         adjective: main, primary, controlling, ruling
-         verb: to head, to control, to direct, to guide, to lead, to own, to rule
-         leko (nimi ku suli)
-
-         noun: square, block, (sometimes) stairs
-         This is an old word that was not included in the first official book, but which is actively used by people, as it’s considered hard to express the meaning of “square” without it.
-
-         len
-
-         noun: cloth, clothes, fabric, layer of privacy
-         adjective: clothed, made of cloth/fabric
-         verb: to clothe, to provide a layer of privacy
-         lete
-
-         noun: cold
-         adjective: cold, cool, raw, uncooked
-         verb: to cool down
-         li
-
-         particle: (between subj. and verb/adj.)
-         lili
-
-         noun: smallness
-         adjective: small, few, young
-         verb: to shrink
-         linja
-
-         noun: long flexible object, string, rope, hair
-         lipu
-
-         noun: flat object, book, document, paper, page, record, website
-         adjective: flat, used as lipu, lipu-like, of lipu
-         loje
-
-         noun/adjective: (the color) red (and its shades)
-         verb: to color smth red
-         lon
-
-         noun: truth, life, existence
-         adjective: real, true, present, existing
-         verb w/o object: is true, exists
-         preposition: in, at, on
-         luka
-
-         noun: hand, arm
-         number: 5 (complex system)
-         lukin
-
-         noun: eye, vision
-         adjective: …-looking, visual
-         verb: to look, to see, to read
-         pre-verb: to seek (to do something)
-         lupa
-
-         noun: hole, door, orifice, window
-         ma
-
-         noun: earth, land, outdoors, territory, country
-         mama
-
-         noun: parent, ancestor, creator, origin, caretaker
-         verb: to create, to parent, to take care of
-         mani
-
-         noun: money, large domesticated animal
-         adjective: (unconventional) wealthy
-         meli
-
-         noun: woman, female, wife
-         adjective: feminine
-         meso (nimi ku suli)
-
-         noun: middle, center
-         adjective: average, moderate, mediocre
-         In some ways, this word is similar to “insa”, but it also lets people say that a thing is moderately X without having to use phrases like “ona li wawa mute ala, li wawa lili ala”.
-
-         mi
-
-         noun: i, me, we, us
-         adjective: my, our
-         mije
-
-         noun: man, male, husband
-         adjective: masculine
-         misikeke (nimi ku suli)
-
-         noun: medicine, cure
-         adjective: medicinal
-         verb: to cure
-         This word was invented by Sonja Lang, but was not included as part of lipu pu. (My personal guess is because “ijo pi pona sijelo” is a rather simple way to say “medicine” without it.)
-
-         moku
-
-         noun: food
-         adjective: edible, of food
-         verb: to eat, to drink, to swallow
-         moli
-
-         noun: death
-         adjective: dead, dying
-         verb: to kill
-         monsi
-
-         noun: back, behind, rear, butt
-         adjective: back, rear
-         monsuta (nimi ku suli)
-
-         noun: fear, monster
-         adjective: scary, monstrous
-         verb: to scare, to be afraid of, (sometimes) to turn into a monster
-         The usage of this word can be especially confusing without extra context. Some people refer to this confusion as “monsutatesu”.
-
-         mu
-
-         (any animal sound)
-         mun
-
-         noun: moon, star, night sky object
-         adjective: lunar, stellar
-         musi
-
-         noun: game, art
-         adjective: entertaining, artistic, amusing
-         verb: to amuse, to play, to have fun
-         mute
-
-         noun: quantity
-         adjective: many, more
-         number: 3 or more (simple system), 20 (complex system)
-         n (nimi ku suli)
-
-         interjection: um…, hm… (“thinking noise”)
-         Technically, the word “n” breaks the rules of toki pona by using a non-allowed syllable, but as it basically functions as a word on its own, it’s allowed. Or one can interpret syllable-final “n” as a separate mora, like in Japanese, where “n” on its own is apparently also used as an interjection…
-
-         namako (nimi ku suli)
-
-         noun: spice, addition
-         adjective: additional, extra
-         verb: to add, to spice up
-         In the first official book, this word was merged with “sin”. However, many people keep using it separately from “sin”. “sin” is interpreted to mean “new” and “namako” to mean “additional”.
-
-         nanpa
-
-         noun: number
-         adjective: -th (ordinal indicator), mathematical, numeric, (unconventional) digital
-         nasa
-
-         adjective: weird, unusual, strange, drunk
-         nasin
-
-         noun: path, road, street, directive, way, custom
-         adjective: street-, true to the directive/way/custom
-         verb (unconventional): to guide, to show the path
-         nena
-
-         noun: hill, mountain, button, bump, nose
-         adjective: hilly, mountainous, bumpy
-         ni
-
-         noun/adjective: this, that
-         nimi
-
-         noun: word, name
-         noka
-
-         noun: foot, leg, bottom, lower part, under (smth)
-         o
-
-         particle: (addressing people, commands)
-         oko (nimi ku suli)
-
-         noun: eye
-         In the first official book, this word was merged into “lukin”. People who use this word separately from “lukin” typically use “oko” to mean “eye” and “lukin” to mean “sight” or “vision”.
-
-         olin
-
-         noun: love, compassion, affection, respect
-         adjective: loved, favorite, respected
-         verb: to love, to respect
-         ona
-
-         noun: he, she, they, it
-         adjective: his, her, their, its
-         open
-
-         noun: start, beginning
-         adjective: initial, starting
-         verb: to start, to open, to turn on
-         pre-verb: to begin (doing something)
-         pakala
-
-         noun: damage, mistake
-         adjective: broken, wrong
-         verb: to break, to make mistakes
-         particle: (generic curse)
-         pali
-
-         noun: work, labor
-         adjective: working
-         verb: to work (on), to make
-         palisa
-
-         noun: long solid object, branch, stick, (unconventional) length
-         adjective: long
-         pan
-
-         noun: bread, grain, corn, rice, pizza
-         pana
-
-         adjective: (unconventional) given, sent, released
-         verb: to give, to send, to emit, to release
-         pi
-
-         particle: “of” (regroups two or more modifiers)
-         pilin
-
-         noun: heart, feeling, touch, sense
-         adjective: feeling, touch-based
-         verb: to touch, to think, to feel
-         pimeja
-
-         noun: (the color) black (and its shades), shadow
-         adjective: black, dark
-         verb: to color smth black, to cast a shadow
-         pini
-
-         noun: end, finish
-         adjective: final, completed, finished, past (with tenpo)
-         verb: to end, to finish, to close
-         pre-verb: to end/stop doing something
-         pipi
-
-         noun: insect, bug
-         poka
-
-         noun: hip, side, nearby area
-         adjective: neighboring, nearby, at one’s side
-         poki
-
-         noun: box, container, bowl, cup, drawer
-         verb (unconventional): to put in a box
-         pona
-
-         noun: good, simplicity
-         adjective: good, simple, friendly, peaceful
-         verb: to improve, to fix
-         pu
-
-         noun: the official toki pona book
-         adjective: as told in the official toki pona book
-         verb: interacting with the official toki pona book
-         The official toki pona book only defines the verb meaning of the word “pu”. (Although the phrase “pu la” is used in it to mean “in this book”.) Some people in the toki pona community prefer to only use it in the verb meaning, while others use it in others as well.
-
-         sama
-
-         noun: similarity, (someone’s) sibling
-         adjective: similar, like, sibling
-         preposition: as, like
-         seli
-
-         noun: heat, warmth, chemical reaction, heat source
-         adjective: warm, hot
-         verb: to heat
-         selo
-
-         noun: outer form, outer layer, shell, skin, boundary
-         adjective: outer
-         seme
-
-         particle: what? which? (for questions)
-         sewi
-
-         noun: area above, top, highest part, sky, god
-         adjective: high, above, divine, sacred
-         sijelo
-
-         noun: body, physical state, torso
-         adjective: physical, of sijelo
-         sike
-
-         noun: circle, ball, cycle, wheel, (with tenpo) year
-         adjective: round, circular, spherical, of one year
-         verb: to make a circle around, to surround
-         sin
-
-         noun: novelty, addition, (unconventional) update, spice
-         adjective: new, additional, fresh, extra
-         verb: to add, to update
-         sina
-
-         noun: you
-         adjective: your
-         sinpin
-
-         noun: face, foremost part, front, wall
-         adjective: of face, foremost
-         sitelen
-
-         noun: symbol, image, writing
-         adjective: symbolic, written, recorded
-         verb: to write, to draw, to record
-         soko (nimi ku suli)
-
-         noun: mushroom, fungus
-         People who want to only use lipu pu vocabulary sometimes also use “kili ma” to refer to mushrooms. Alternatively, “kili pi kasi ala” is also possible, since “kili” also refers to mushrooms.
-
-         sona
-
-         noun: knowledge, information
-         adjective: known
-         verb: to know
-         pre-verb: to know (how to do something)
-         soweli
-
-         noun: land mammal, animal
-         suli
-
-         noun: size, greatness
-         adjective: big, heavy, tall, great, important, adult
-         verb: to grow
-         suno
-
-         noun: sun, light, brightness, light source
-         adjective: solar, bright
-         verb: to light, to shine
-         supa
-
-         noun: horizontal surface
-         suwi
-
-         noun: (unconventional) sweets, fragrances
-         adjective: sweet, fragrant, cute, adorable
-         tan
-
-         noun: cause, reason, origin
-         adjective: original
-         verb w/ object (unconventional): to cause
-         preposition: from, because of
-         taso
-
-         particle (at beginning of sentence): but, however
-         adjective: only
-         tawa
-
-         noun: movement
-         adjective: moving
-         verb: to move
-         preposition: to, for, from perspective of
-         telo
-
-         noun/adjective: water, fluid, liquid
-         adjective: wet, fluid, liquid
-         verb: to water, to clean
-         tenpo
-
-         noun: time, moment, occasion
-         adjective: temporal
-         toki
-
-         noun: speech, conversation, language
-         adjective: verbal, conversational
-         verb: to speak, to talk, to use language, to think
-         tomo
-
-         noun: home, building, structure, indoor space, room
-         adjective: indoor
-         tonsi (nimi ku suli)
-
-         noun: non-binary person, trans person
-         adjective: gender-nonconforming, trans
-         The word “tonsi” was created by the community after the official book was released and, according to a poll in October of 2021, is the most accepted “new” non-official word.
-
-         tu
-
-         number: 2
-         noun: divide
-         adjective: divided
-         verb: to divide
-         Using “tu” at the end of a noun phrase is generally associated with the number 2. The meaning “divided” is usually specified by using a “li” particle:
-
-         kulupu tu – two communities
-
-         kulupu li tu. – the community is divided.
-
-         unpa
-
-         noun: sex
-         adjective: sexual
-         verb: to have sex with
-         uta
-
-         noun: mouth, lips
-         adjective: oral
-         utala
-
-         noun: fight, battle, challenge, war
-         adjective: aggressive, warlike
-         verb: to fight, to battle, to challenge
-         walo
-
-         noun: the color white (and its shades)
-         adjective: white, bright/light
-         verb: to color something white
-         wan
-
-         number: 1
-         noun: part (of smth)
-         adjective: united, married
-         verb: to unite, to marry
-         Using “wan” at the end of a noun phrase is generally associated with the number 1. The meaning “united” is usually specified by using a “li” particle:
-
-         kulupu wan – one community
-
-         kulupu li wan. – the community is united.
-
-         kulupu mute wan – 21 communities (complex numbering system)
-
-         kulupu mute li wan – many (or 20) communities are united.
-
-         waso
-
-         noun: bird, flying creature
-         wawa
-
-         noun: strength, power, energy
-         adjective: strong, powerful, energetic
-         weka
-
-         noun: absence, remoteness
-         adjective: absent, away, remote
-         verb: remove, get rid of
-         wile
-
-         noun: want, need, desire
-         adjective: desired, needed, required
-         verb: to want smth
-         pre-verb: to want to do smth
-
-         */
+        case ko
+        case kokosila
+        case kon
+        case ku
+        case kule
+        case kulupu
+        case kute
+        case la
+        case lanpan
+        case lape
+        case laso
+        case lawa
+        case leko
+        case len
+        case lete
+        case li
+        case lili
+        case linja
+        case lipu
+        case loje
+        case lon
+        case luka
+        case lukin
+        case lupa
+        case ma
+        case mama
+        case mani
+        case meli
+        case meso
+        case mi
+        case mije
+        case misikeke
+        case moku
+        case moli
+        case monsi
+        case monsuta
+        case mu
+        case mun
+        case musi
+        case mute
+        case n
+        case namako
+        case nanpa
+        case nasa
+        case nasin
+        case nena
+        case ni
+        case nimi
+        case noka
+        case o
+        case oko
+        case olin
+        case ona
+        case open
+        case pakala
+        case pali
+        case palisa
+        case pan
+        case pana
+        case pi
+        case pilin
+        case pimeja
+        case pini
+        case pipi
+        case poka
+        case poki
+        case pona
+        case pu
+        case sama
+        case seli
+        case selo
+        case seme
+        case sewi
+        case sijelo
+        case sike
+        case sin
+        case sina
+        case sinpin
+        case sitelen
+        case soko
+        case sona
+        case soweli
+        case suli
+        case suno
+        case supa
+        case suwi
+        case tan
+        case taso
+        case tawa
+        case telo
+        case tenpo
+        case toki
+        case tomo
+        case tonsi
+        case tu
+        case unpa
+        case uta
+        case utala
+        case walo
+        case wan
+        case waso
+        case wawa
+        case weka
+        case wile
         
     }
     

@@ -36,6 +36,13 @@ class Speaker:ObservableObject {
         synthesizer.speak(utterance)
     }
     
+    public func speak(_ text: String) {
+        guard !prefs.selectedVoice.isEmpty else { return }
+        let utterance = AVSpeechUtterance(string: processed(text))
+        utterance.voice = AVSpeechSynthesisVoice(identifier: prefs.selectedVoice)
+        synthesizer.speak(utterance)
+    }
+
     ///  returns a form of the word the MX voice will pronouce propelry for Toki Pona
     public func processed(_ word:String) -> String {
         return word.replacingOccurrences(of: "j", with: "ll")

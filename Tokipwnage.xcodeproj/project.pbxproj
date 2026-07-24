@@ -21,6 +21,8 @@
 		D8934C9B296F733C00A04BA5 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C9A296F733C00A04BA5 /* Speaker.swift */; };
 		D8934C9D296F77DA00A04BA5 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C9C296F77DA00A04BA5 /* PreferencesView.swift */; };
 		D8934C9F296F834B00A04BA5 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8934C9E296F834B00A04BA5 /* Preferences.swift */; };
+		D8CCF6722FCE495B0031C1B0 /* TranslateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CCF6712FCE495B0031C1B0 /* TranslateView.swift */; };
+		D8CCF6752FCE5D000031C1B0 /* PartsOfSpeech+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CCF6742FCE5D000031C1B0 /* PartsOfSpeech+Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		D8934C9A296F733C00A04BA5 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 		D8934C9C296F77DA00A04BA5 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		D8934C9E296F834B00A04BA5 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		D8CCF6712FCE495B0031C1B0 /* TranslateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateView.swift; sourceTree = "<group>"; };
+		D8CCF6742FCE5D000031C1B0 /* PartsOfSpeech+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PartsOfSpeech+Color.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 				D8934C69296F016900A04BA5 /* Assets.xcassets */,
 				D8934C6B296F016900A04BA5 /* Tokipwnage.entitlements */,
 				D8934C6C296F016900A04BA5 /* Preview Content */,
+				D8CCF6732FCE5D000031C1B0 /* Extensions */,
 			);
 			path = Tokipwnage;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				D8934C96296F15AF00A04BA5 /* WordsListView.swift */,
 				D8934C98296F15CA00A04BA5 /* WordView.swift */,
 				D8934C9C296F77DA00A04BA5 /* PreferencesView.swift */,
+				D8CCF6712FCE495B0031C1B0 /* TranslateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +170,14 @@
 				D8934C9E296F834B00A04BA5 /* Preferences.swift */,
 			);
 			path = Observables;
+			sourceTree = "<group>";
+		};
+		D8CCF6732FCE5D000031C1B0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D8CCF6742FCE5D000031C1B0 /* PartsOfSpeech+Color.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,11 +310,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8CCF6752FCE5D000031C1B0 /* PartsOfSpeech+Color.swift in Sources */,
 				D8934C95296F151600A04BA5 /* WordsProvider.swift in Sources */,
 				D8934C68296F016800A04BA5 /* ContentView.swift in Sources */,
 				D8934C99296F15CA00A04BA5 /* WordView.swift in Sources */,
 				D8934C91296F01D300A04BA5 /* Toki.swift in Sources */,
 				D8934C9B296F733C00A04BA5 /* Speaker.swift in Sources */,
+				D8CCF6722FCE495B0031C1B0 /* TranslateView.swift in Sources */,
 				D8934C66296F016800A04BA5 /* TokipwnageApp.swift in Sources */,
 				D8934C9D296F77DA00A04BA5 /* PreferencesView.swift in Sources */,
 				D8934C97296F15AF00A04BA5 /* WordsListView.swift in Sources */,
