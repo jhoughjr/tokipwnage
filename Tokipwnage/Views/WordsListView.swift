@@ -19,16 +19,24 @@ private func selectionHaptic() {
 struct WordListView: View {
 
     @ObservedObject var provider:WordsProvider
+    @EnvironmentObject var favorites: FavoritesStore
     @State var isShowingPrefs = false
     @State var navigable = true
     @State private var activeFilters: Set<Vocabulary.Words.PartsOfSpeech> = []
     @State private var searchTask: Task<Void, Never>?
+    @State private var showFavoritesOnly = false
 
     private var displayedWords: [Vocabulary.Words] {
-        guard !activeFilters.isEmpty else { return provider.words }
-        return provider.words.filter { word in
-            !activeFilters.isDisjoint(with: Set(word.partsOfSpeech))
+        var words = provider.words
+        if !activeFilters.isEmpty {
+            words = words.filter { word in
+                !activeFilters.isDisjoint(with: Set(word.partsOfSpeech))
+            }
         }
+        if showFavoritesOnly {
+            words = words.filter { favorites.isFavorite($0) }
+        }
+        return words
     }
 
     private var searchSelector: some View {
@@ -107,6 +115,14 @@ struct WordListView: View {
             Text("\(displayedWords.count)")
                 .fontWeight(.ultraLight)
             Spacer()
+            Button {
+                showFavoritesOnly.toggle()
+            } label: {
+                Image(systemName: showFavoritesOnly ? "star.fill" : "star")
+                    .foregroundColor(showFavoritesOnly ? .yellow : .primary)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text("Show favorites only"))
             NavigationLink(destination: TranslateView(),
                            label: { Image(systemName: "arrow.left.arrow.right") })
             NavigationLink(destination: PreferencesView(),
@@ -118,6 +134,12 @@ struct WordListView: View {
     private func rowContent(for word: Vocabulary.Words) -> some View {
         HStack {
             Text(word.rawValue)
+            if favorites.isFavorite(word) {
+                Image(systemName: "star.fill")
+                    .foregroundColor(.yellow)
+                    .font(.caption2)
+                    .accessibilityLabel(Text("favorite"))
+            }
             Spacer()
             HStack(spacing: 4) {
                 ForEach(word.partsOfSpeech, id: \.self) { part in
@@ -131,7 +153,7 @@ struct WordListView: View {
     }
 
     private var isFiltering: Bool {
-        !provider.searchString.isEmpty || !activeFilters.isEmpty
+        !provider.searchString.isEmpty || !activeFilters.isEmpty || showFavoritesOnly
     }
 
     private var emptyState: some View {

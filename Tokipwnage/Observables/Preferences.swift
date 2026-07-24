@@ -14,3 +14,22 @@ class Preferences:ObservableObject {
     @AppStorage("autoSpeak") var autoSpeak = true
 }
 
+/// Stores the user's favorited words, persisted to UserDefaults as an array of raw values.
+final class FavoritesStore: ObservableObject {
+    private let key = "favoriteWords"
+    @Published var rawValues: Set<String> {
+        didSet { UserDefaults.standard.set(Array(rawValues), forKey: key) }
+    }
+    init() {
+        rawValues = Set(UserDefaults.standard.stringArray(forKey: key) ?? [])
+    }
+    func isFavorite(_ word: Vocabulary.Words) -> Bool { rawValues.contains(word.rawValue) }
+    func toggle(_ word: Vocabulary.Words) {
+        if rawValues.contains(word.rawValue) { rawValues.remove(word.rawValue) }
+        else { rawValues.insert(word.rawValue) }
+    }
+    var favorites: [Vocabulary.Words] {
+        Vocabulary.Words.allCases.filter { rawValues.contains($0.rawValue) }
+    }
+}
+

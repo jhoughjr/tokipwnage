@@ -30,5 +30,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(Speaker())
             .environmentObject(Preferences())
+            .environmentObject(FavoritesStore())
     }
 }

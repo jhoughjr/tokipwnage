@@ -11,6 +11,7 @@ struct WordView: View {
     let word:Vocabulary.Words
     @EnvironmentObject var speaker: Speaker
     @EnvironmentObject var prefs: Preferences
+    @EnvironmentObject var favorites: FavoritesStore
     @ObservedObject var provider:WordsProvider
 
     @State private var showVoiceAlert = false
@@ -127,6 +128,14 @@ struct WordView: View {
                 Image(systemName: "speaker.wave.3")
             }
             .buttonStyle(PlainButtonStyle())
+            Button {
+                favorites.toggle(word)
+            } label: {
+                Image(systemName: favorites.isFavorite(word) ? "star.fill" : "star")
+                    .foregroundColor(favorites.isFavorite(word) ? .yellow : .primary)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text(favorites.isFavorite(word) ? "Remove favorite" : "Add favorite"))
             headingSummary
         }
     }
