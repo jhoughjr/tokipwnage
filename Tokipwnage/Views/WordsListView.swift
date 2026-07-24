@@ -13,6 +13,7 @@ struct WordListView: View {
     @State var isShowingPrefs = false
     @State var navigable = true
     @State private var activeFilters: Set<Vocabulary.Words.PartsOfSpeech> = []
+    @State private var searchTask: Task<Void, Never>?
 
     private var displayedWords: [Vocabulary.Words] {
         guard !activeFilters.isEmpty else { return provider.words }
@@ -43,12 +44,14 @@ struct WordListView: View {
         }
     }
 
-    private var searchField: some View {
-        TextField("Search",
-                  text: $provider.searchString,
-                  prompt: Text("Search \($provider.category.wrappedValue.string())"))
-        .onChange(of: provider.searchString) { newValue in
-            provider.loadSearch(s: newValue)
+    private func scheduleSearch(for newValue: String) {
+        searchTask?.cancel()
+        searchTask = Task {
+            try? await Task.sleep(nanoseconds: 250_000_000)
+            if Task.isCancelled { return }
+            await MainActor.run {
+                provider.loadSearch(s: newValue)
+            }
         }
     }
 
@@ -115,6 +118,27 @@ struct WordListView: View {
         }
     }
 
+    private var isFiltering: Bool {
+        !provider.searchString.isEmpty || !activeFilters.isEmpty
+    }
+
+    private var emptyState: some View {
+        VStack(spacing: 8) {
+            Spacer()
+            Image(systemName: "magnifyingglass")
+                .font(.largeTitle)
+                .foregroundColor(.secondary)
+            Text("No words found")
+                .font(.headline)
+            Text("Try a different search or filter")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 40)
+    }
+
     private var list: some View {
         List {
             ForEach(displayedWords, id:\.rawValue) { word in
@@ -134,11 +158,22 @@ struct WordListView: View {
         VStack(alignment: .leading,
                content: {
             title
-            searchField
             searchSelector
             filterBar
-            list
+            if displayedWords.isEmpty && isFiltering {
+                emptyState
+            } else {
+                list
+            }
         })
         .padding()
+        .searchable(text: $provider.searchString,
+                    prompt: Text("Search \(provider.category.string())"))
+        .onChange(of: provider.searchString) { newValue in
+            scheduleSearch(for: newValue)
+        }
+        .onChange(of: provider.category) { _ in
+            provider.loadSearch(s: provider.searchString)
+        }
     }
 }
