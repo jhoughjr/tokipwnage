@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var wordProvider = WordsProvider()
+    @StateObject var wordProvider = WordsProvider()
     @State var isShowingPrefs = false
-    
+
     var body: some View {
-        NavigationView {
+        NavigationStack {
             WordListView(provider: wordProvider,
                          navigable: true)
             .onAppear {
@@ -21,12 +21,14 @@ struct ContentView: View {
 
             }
         }
-        .padding()        
+        .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(Speaker())
+            .environmentObject(Preferences())
     }
 }

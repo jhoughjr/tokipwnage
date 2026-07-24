@@ -9,8 +9,8 @@ import SwiftUI
 
 struct WordView: View {
     let word:Vocabulary.Words
-    @ObservedObject var speaker = Speaker()
-    @ObservedObject var prefs = Preferences()
+    @EnvironmentObject var speaker: Speaker
+    @EnvironmentObject var prefs: Preferences
     @ObservedObject var provider:WordsProvider
 
     @State private var showVoiceAlert = false

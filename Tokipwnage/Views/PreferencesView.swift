@@ -10,7 +10,7 @@ import AVKit
 
 
 struct PreferencesView: View {
-    @ObservedObject var prefs = Preferences()
+    @EnvironmentObject var prefs: Preferences
 
     @State private var filterText = ""
     @State private var genderFilter: AVSpeechSynthesisVoiceGender? = nil

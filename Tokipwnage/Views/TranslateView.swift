@@ -49,7 +49,7 @@ struct TranslateView: View {
     }
 
     @State private var mode: Mode = .englishToToki
-    @ObservedObject private var speaker = Speaker()
+    @EnvironmentObject private var speaker: Speaker
 
     // EN → TP
     @State private var englishSentence = ""
