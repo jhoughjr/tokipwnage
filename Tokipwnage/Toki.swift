@@ -135,7 +135,9 @@ public class Vocabulary {
                          ]
             
             case .ali:
-                return Words.ale.definitions
+                // `ali` is an alias for `ale`. Call the raw switch (computedDefinitions),
+                // NOT `definitions`, which reads the cache that is still being built.
+                return Words.ale.computedDefinitions
             
             case .ante:
                 return [Definition(.verb,"to change"),
