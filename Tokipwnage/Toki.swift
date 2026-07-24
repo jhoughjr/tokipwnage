@@ -53,7 +53,7 @@ public class Vocabulary {
         }
         
         /// Every definition of a word consiting of its part of speech and meaing as aforementioned part.
-        public var definitions:[Definition] {
+        private var computedDefinitions:[Definition] {
             switch self {
             case .a:
                 return [Definition(.particle,
@@ -968,12 +968,53 @@ public class Vocabulary {
 
             }
         }
-        
-        /// A collection of every part of speech for this word, gathered from its definitions.
-        public var partsOfSpeech:[PartsOfSpeech] {
-            Set<PartsOfSpeech>(self.definitions.map({$0.partOfSpeech})).reversed().reversed()
+
+        /// Cache of `computedDefinitions` for every case, built once on first access
+        /// so the (expensive, ~1000-line) switch in `computedDefinitions` is not
+        /// re-evaluated every time `definitions` is read.
+        private static let definitionsTable: [Words: [Definition]] = Dictionary(uniqueKeysWithValues: Words.allCases.map { ($0, $0.computedDefinitions) })
+
+        /// Every definition of a word consiting of its part of speech and meaing as aforementioned part.
+        public var definitions:[Definition] {
+            Words.definitionsTable[self] ?? []
         }
-        
+
+        /// Canonical display order for parts of speech, used to keep `partsOfSpeech` deterministic.
+        private static let partsOfSpeechOrder: [PartsOfSpeech] = [.noun, .verb, .preverb, .preposition, .particle, .adjective, .number, .interjection]
+
+        /// A collection of every part of speech for this word, gathered from its definitions,
+        /// in a fixed, deterministic order (see `partsOfSpeechOrder`).
+        public var partsOfSpeech:[PartsOfSpeech] {
+            let present = Set(self.definitions.map { $0.partOfSpeech })
+            return Words.partsOfSpeechOrder.filter { present.contains($0) }
+        }
+
+        /// Index mapping a lowercased English word (whole-word token found in a definition's
+        /// `meaning`) to every `Words` case whose definitions contain that token. Built once,
+        /// lazily, on first use.
+        private static let englishIndex: [String: [Words]] = {
+            var index: [String: Set<Words>] = [:]
+            for word in Words.allCases {
+                for definition in word.definitions {
+                    let tokens = definition.meaning
+                        .lowercased()
+                        .split(whereSeparator: { !$0.isLetter })
+                    for token in tokens {
+                        index[String(token), default: []].insert(word)
+                    }
+                }
+            }
+            return index.mapValues { $0.sorted { $0.rawValue < $1.rawValue } }
+        }()
+
+        /// Words whose any definition meaning contains `english` as a whole word (case-insensitive),
+        /// sorted by rawValue.
+        public static func words(forEnglish english: String) -> [Words] {
+            let query = english.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            guard !query.isEmpty else { return [] }
+            return Words.englishIndex[query] ?? []
+        }
+
 
         case a
         case akesi
