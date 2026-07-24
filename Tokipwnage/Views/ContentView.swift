@@ -11,17 +11,36 @@ struct ContentView: View {
     
     @StateObject var wordProvider = WordsProvider()
     @State var isShowingPrefs = false
+    @State private var selectedWord: Vocabulary.Words?
 
     var body: some View {
-        NavigationStack {
+        NavigationSplitView {
             WordListView(provider: wordProvider,
-                         navigable: true)
+                         selection: $selectedWord)
             .onAppear {
                 wordProvider.loadAllWords()
 
             }
+        } detail: {
+            NavigationStack {
+                if let selectedWord {
+                    WordView(word: selectedWord, provider: wordProvider)
+                } else {
+                    wordPlaceholder
+                }
+            }
         }
-        .padding()
+    }
+
+    private var wordPlaceholder: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "character.book.closed")
+                .font(.largeTitle)
+                .foregroundColor(.secondary)
+            Text("Select a word")
+                .font(.headline)
+                .foregroundColor(.secondary)
+        }
     }
 }
 

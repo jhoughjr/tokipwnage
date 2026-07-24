@@ -19,9 +19,9 @@ private func selectionHaptic() {
 struct WordListView: View {
 
     @ObservedObject var provider:WordsProvider
+    @Binding var selection: Vocabulary.Words?
     @EnvironmentObject var favorites: FavoritesStore
     @State var isShowingPrefs = false
-    @State var navigable = true
     @State private var activeFilters: Set<Vocabulary.Words.PartsOfSpeech> = []
     @State private var searchTask: Task<Void, Never>?
     @State private var showFavoritesOnly = false
@@ -174,16 +174,9 @@ struct WordListView: View {
     }
 
     private var list: some View {
-        List {
-            ForEach(displayedWords, id:\.rawValue) { word in
-                if navigable {
-                    NavigationLink(destination: WordView(word: word,
-                                                        provider: provider)) {
-                        rowContent(for: word)
-                    }
-                } else {
-                    rowContent(for: word)
-                }
+        List(selection: $selection) {
+            ForEach(displayedWords, id: \.rawValue) { word in
+                rowContent(for: word).tag(word)
             }
         }
     }
