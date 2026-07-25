@@ -21,6 +21,7 @@ struct ContentView: View {
                 wordProvider.loadAllWords()
 
             }
+            .navigationSplitViewColumnWidth(min: 280, ideal: 320)
         } detail: {
             NavigationStack {
                 if let selectedWord {

@@ -64,8 +64,8 @@ struct WordView: View {
             .foregroundColor(definition.depracated ? .secondary : .primary)
     }
 
-    private var partOfSpeechSortedList: some View {
-        List {
+    private var partOfSpeechSections: some View {
+        VStack(alignment: .leading, spacing: 16) {
             ForEach(orderedParts(for: word),
                     id:\.self) { part in
                 VStack(alignment:.leading, spacing: 8) {
@@ -96,7 +96,6 @@ struct WordView: View {
                     }
                     .padding([.leading], 24)
                 }
-                .padding([.leading],0)
             }
         }
     }
@@ -141,10 +140,14 @@ struct WordView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            headingView
-            Divider()
-            partOfSpeechSortedList
+        ScrollView {
+            VStack(alignment: .leading, spacing: 12) {
+                headingView
+                Divider()
+                partOfSpeechSections
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
         }
         .onAppear {
             if prefs.autoSpeak {

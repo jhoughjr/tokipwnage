@@ -16,6 +16,52 @@ private func selectionHaptic() {
     #endif
 }
 
+/// A simple wrapping (flow) layout: lays subviews left-to-right and wraps to a
+/// new line when the proposed width is exceeded, so chips display regardless of
+/// the container width instead of scrolling or clipping.
+struct FlowLayout: Layout {
+    var spacing: CGFloat = 6
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout Void) -> CGSize {
+        let maxWidth = proposal.width ?? .infinity
+        var x: CGFloat = 0
+        var y: CGFloat = 0
+        var rowHeight: CGFloat = 0
+        var widest: CGFloat = 0
+
+        for sub in subviews {
+            let size = sub.sizeThatFits(.unspecified)
+            if x + size.width > maxWidth, x > 0 {
+                x = 0
+                y += rowHeight + spacing
+                rowHeight = 0
+            }
+            x += size.width + spacing
+            rowHeight = max(rowHeight, size.height)
+            widest = max(widest, x - spacing)
+        }
+        return CGSize(width: min(widest, maxWidth), height: y + rowHeight)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout Void) {
+        var x: CGFloat = bounds.minX
+        var y: CGFloat = bounds.minY
+        var rowHeight: CGFloat = 0
+
+        for sub in subviews {
+            let size = sub.sizeThatFits(.unspecified)
+            if x + size.width > bounds.maxX, x > bounds.minX {
+                x = bounds.minX
+                y += rowHeight + spacing
+                rowHeight = 0
+            }
+            sub.place(at: CGPoint(x: x, y: y), anchor: .topLeading, proposal: ProposedViewSize(size))
+            x += size.width + spacing
+            rowHeight = max(rowHeight, size.height)
+        }
+    }
+}
+
 struct WordListView: View {
 
     @ObservedObject var provider:WordsProvider
@@ -73,39 +119,37 @@ struct WordListView: View {
     }
 
     private var filterBar: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 6) {
-                ForEach(Vocabulary.Words.PartsOfSpeech.allCases, id: \.self) { part in
-                    let active = activeFilters.contains(part)
-                    Button {
-                        selectionHaptic()
-                        if active {
-                            activeFilters.remove(part)
-                        } else {
-                            activeFilters.insert(part)
-                        }
-                    } label: {
-                        HStack(spacing: 4) {
-                            Circle()
-                                .fill(active ? Color.white : part.color)
-                                .frame(width: 7, height: 7)
-                                .accessibilityHidden(true)
-                            Text(part.rawValue)
-                                .font(.caption2)
-                        }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(
-                            Capsule()
-                                .fill(active ? part.color : part.color.opacity(0.12))
-                        )
-                        .foregroundColor(active ? .white : part.color)
+        FlowLayout(spacing: 6) {
+            ForEach(Vocabulary.Words.PartsOfSpeech.allCases, id: \.self) { part in
+                let active = activeFilters.contains(part)
+                Button {
+                    selectionHaptic()
+                    if active {
+                        activeFilters.remove(part)
+                    } else {
+                        activeFilters.insert(part)
                     }
-                    .buttonStyle(.plain)
+                } label: {
+                    HStack(spacing: 4) {
+                        Circle()
+                            .fill(active ? Color.white : part.color)
+                            .frame(width: 7, height: 7)
+                            .accessibilityHidden(true)
+                        Text(part.rawValue)
+                            .font(.caption2)
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(active ? part.color : part.color.opacity(0.12))
+                    )
+                    .foregroundColor(active ? .white : part.color)
                 }
+                .buttonStyle(.plain)
             }
-            .padding(.vertical, 2)
         }
+        .padding(.vertical, 2)
     }
 
     private var title: some View {
