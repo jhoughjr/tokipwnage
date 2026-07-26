@@ -6,5 +6,12 @@
     <true/>
     <key>com.apple.security.files.user-selected.read-only</key>
     <true/>
+    <!-- AVSpeechSynthesizer reaches audioanalyticsd; without this mach-lookup
+         exception the sandbox hits a PRECONDITION FAILURE and the app crashes
+         the moment it tries to speak. -->
+    <key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
+    <array>
+        <string>com.apple.audioanalyticsd</string>
+    </array>
 </dict>
 </plist>

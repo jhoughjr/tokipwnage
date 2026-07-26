@@ -4,6 +4,15 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import UIKit
+#endif
+
+private func selectionHaptic() {
+    #if os(iOS)
+    UIImpactFeedbackGenerator(style: .light).impactOccurred()
+    #endif
+}
 
 struct WordSlot: Identifiable {
     let id = UUID()
@@ -28,9 +37,7 @@ struct WordSlot: Identifiable {
             .map { $0.trimmingCharacters(in: .punctuationCharacters).lowercased() }
             .filter { !$0.isEmpty && !stopWords.contains($0) }
             .map { english in
-                let matches = Vocabulary.Words.allCases.filter { word in
-                    word.definitions.contains { $0.meaning.localizedCaseInsensitiveContains(english) }
-                }.sorted { $0.rawValue < $1.rawValue }
+                let matches = Vocabulary.Words.words(forEnglish: english)
 
                 return WordSlot(
                     englishWord: english,
@@ -49,7 +56,7 @@ struct TranslateView: View {
     }
 
     @State private var mode: Mode = .englishToToki
-    @ObservedObject private var speaker = Speaker()
+    @EnvironmentObject private var speaker: Speaker
 
     // EN → TP
     @State private var englishSentence = ""
@@ -123,6 +130,7 @@ struct TranslateView: View {
                             Circle()
                                 .fill(part.color)
                                 .frame(width: 6, height: 6)
+                                .accessibilityLabel(Text(part.rawValue))
                         }
                     }
                     .frame(width: 44)
@@ -151,6 +159,30 @@ struct TranslateView: View {
         .padding(.vertical, 2)
     }
 
+    @ViewBuilder
+    private var speakControl: some View {
+        if speaker.isSpeaking {
+            Button {
+                speaker.stop()
+            } label: {
+                Image(systemName: "stop.fill")
+            }
+            .buttonStyle(.plain)
+        } else {
+            Button {
+                if speaker.canSpeak {
+                    speaker.speak(builtPhrase.map(\.rawValue).joined(separator: " "))
+                } else {
+                    showVoiceAlert = true
+                }
+            } label: {
+                Image(systemName: "speaker.wave.3")
+            }
+            .buttonStyle(.plain)
+            .disabled(builtPhrase.isEmpty)
+        }
+    }
+
     private var englishToTokiView: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -160,17 +192,7 @@ struct TranslateView: View {
                 Button("Go") { translate() }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.small)
-                Button {
-                    if speaker.prefs.selectedVoice.isEmpty {
-                        showVoiceAlert = true
-                    } else {
-                        speaker.speak(builtPhrase.map(\.rawValue).joined(separator: " "))
-                    }
-                } label: {
-                    Image(systemName: "speaker.wave.3")
-                }
-                .buttonStyle(.plain)
-                .disabled(builtPhrase.isEmpty)
+                speakControl
             }
 
             if !wordSlots.isEmpty {
@@ -272,6 +294,7 @@ struct TranslateView: View {
                     ForEach(filteredTokiWords, id: \.rawValue) { word in
                         let selected = selectedTokiWords.contains(word)
                         Button {
+                            selectionHaptic()
                             if selected { selectedTokiWords.removeAll { $0 == word } }
                             else { selectedTokiWords.append(word) }
                         } label: {

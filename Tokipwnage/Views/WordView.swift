@@ -9,8 +9,8 @@ import SwiftUI
 
 struct WordView: View {
     let word:Vocabulary.Words
-    @ObservedObject var speaker = Speaker()
-    @ObservedObject var prefs = Preferences()
+    @EnvironmentObject var speaker: Speaker
+    @EnvironmentObject var favorites: FavoritesStore
     @ObservedObject var provider:WordsProvider
 
     @State private var showVoiceAlert = false
@@ -63,8 +63,8 @@ struct WordView: View {
             .foregroundColor(definition.depracated ? .secondary : .primary)
     }
 
-    private var partOfSpeechSortedList: some View {
-        List {
+    private var partOfSpeechSections: some View {
+        VStack(alignment: .leading, spacing: 16) {
             ForEach(orderedParts(for: word),
                     id:\.self) { part in
                 VStack(alignment:.leading, spacing: 8) {
@@ -72,6 +72,7 @@ struct WordView: View {
                         Circle()
                             .fill(part.color)
                             .frame(width: 10, height: 10)
+                            .accessibilityHidden(true)
                         Text(part.rawValue)
                             .bold()
                             .italic()
@@ -94,7 +95,6 @@ struct WordView: View {
                     }
                     .padding([.leading], 24)
                 }
-                .padding([.leading],0)
             }
         }
     }
@@ -117,27 +117,41 @@ struct WordView: View {
             Text(word.rawValue)
                 .font(.title)
             Button {
-                if prefs.selectedVoice.isEmpty {
-                    showVoiceAlert = true
-                } else {
+                if speaker.canSpeak {
                     speaker.speak(word)
+                } else {
+                    showVoiceAlert = true
                 }
             } label: {
                 Image(systemName: "speaker.wave.3")
             }
             .buttonStyle(PlainButtonStyle())
+            Button {
+                favorites.toggle(word)
+            } label: {
+                Image(systemName: favorites.isFavorite(word) ? "star.fill" : "star")
+                    .foregroundColor(favorites.isFavorite(word) ? .yellow : .primary)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text(favorites.isFavorite(word) ? "Remove favorite" : "Add favorite"))
             headingSummary
         }
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            headingView
-            Divider()
-            partOfSpeechSortedList
+        ScrollView {
+            VStack(alignment: .leading, spacing: 12) {
+                headingView
+                Divider()
+                partOfSpeechSections
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
         }
         .onAppear {
-            if prefs.autoSpeak {
+            // autoSpeak is a preference; `speak` itself no-ops when `canSpeak`
+            // is false, so this never speaks in a wrong/absent voice.
+            if speaker.autoSpeakEnabled {
                 speaker.speak(word)
             }
         }

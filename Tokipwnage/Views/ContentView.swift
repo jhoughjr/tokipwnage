@@ -9,24 +9,47 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var wordProvider = WordsProvider()
+    @StateObject var wordProvider = WordsProvider()
     @State var isShowingPrefs = false
-    
+    @State private var selectedWord: Vocabulary.Words?
+
     var body: some View {
-        NavigationView {
+        NavigationSplitView {
             WordListView(provider: wordProvider,
-                         navigable: true)
+                         selection: $selectedWord)
             .onAppear {
                 wordProvider.loadAllWords()
 
             }
+            .navigationSplitViewColumnWidth(min: 280, ideal: 320)
+        } detail: {
+            NavigationStack {
+                if let selectedWord {
+                    WordView(word: selectedWord, provider: wordProvider)
+                } else {
+                    wordPlaceholder
+                }
+            }
         }
-        .padding()        
+    }
+
+    private var wordPlaceholder: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "character.book.closed")
+                .font(.largeTitle)
+                .foregroundColor(.secondary)
+            Text("Select a word")
+                .font(.headline)
+                .foregroundColor(.secondary)
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(Speaker())
+            .environmentObject(Preferences())
+            .environmentObject(FavoritesStore())
     }
 }

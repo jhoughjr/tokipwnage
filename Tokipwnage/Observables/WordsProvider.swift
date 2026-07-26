@@ -49,12 +49,12 @@ public class WordsProvider:ObservableObject {
                                 .filter({ word in
                                     switch category {
                                     case .word:
-                                        return word.rawValue.contains(s)
+                                        return word.rawValue.range(of: s, options: [.caseInsensitive, .diacriticInsensitive]) != nil
                                     case .meanings:
                                         // discard cuz i dont want defs, i want words
                                         var found = false
                                         for def in word.definitions {
-                                            if def.meaning.contains(s) {
+                                            if def.meaning.range(of: s, options: [.caseInsensitive, .diacriticInsensitive]) != nil {
                                                 found = true
                                             }
                                         }
