@@ -170,10 +170,10 @@ struct TranslateView: View {
             .buttonStyle(.plain)
         } else {
             Button {
-                if speaker.prefs.selectedVoice.isEmpty {
-                    showVoiceAlert = true
-                } else {
+                if speaker.canSpeak {
                     speaker.speak(builtPhrase.map(\.rawValue).joined(separator: " "))
+                } else {
+                    showVoiceAlert = true
                 }
             } label: {
                 Image(systemName: "speaker.wave.3")

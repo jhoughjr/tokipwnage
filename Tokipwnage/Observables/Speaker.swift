@@ -10,15 +10,26 @@ import AVKit
 
 class Speaker: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
 
-    /// Globalized via @AppStorage
-    ///  Used to get selected voice.
-    @ObservedObject var prefs = Preferences()
+    /// Shared, UserDefaults-backed preferences (voice + autoSpeak). Plain `let`
+    /// on purpose: `@ObservedObject` does nothing outside a View, and every
+    /// `Preferences` instance reads the same @AppStorage keys.
+    private let prefs = Preferences()
 
     /// Published so that UI can react to speech state
     @Published var isSpeaking = false
 
     /// The Speech Synth used for TTS.
     let synthesizer = AVSpeechSynthesizer()
+
+    /// Single source of truth for whether speech can be produced right now.
+    /// Speech is gated on the user having chosen a voice in Settings — with no
+    /// voice we stay silent rather than speak in a wrong/default voice. The
+    /// sandbox side of speech (mach-lookup for audioanalyticsd) is granted by
+    /// the entitlement; this gate is the app-level policy on top of it.
+    public var canSpeak: Bool { !prefs.selectedVoice.isEmpty }
+
+    /// Whether a selected word should be spoken automatically on appear.
+    public var autoSpeakEnabled: Bool { prefs.autoSpeak }
 
     override init() {
         super.init()
@@ -43,7 +54,7 @@ class Speaker: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     /// Builds an utterance from already-processed text, assigns the selected
     /// voice, and speaks it. Does nothing if no voice is selected.
     private func speak(rawText: String) {
-        guard !prefs.selectedVoice.isEmpty else {
+        guard canSpeak else {
             return
         }
 

@@ -10,7 +10,6 @@ import SwiftUI
 struct WordView: View {
     let word:Vocabulary.Words
     @EnvironmentObject var speaker: Speaker
-    @EnvironmentObject var prefs: Preferences
     @EnvironmentObject var favorites: FavoritesStore
     @ObservedObject var provider:WordsProvider
 
@@ -118,10 +117,10 @@ struct WordView: View {
             Text(word.rawValue)
                 .font(.title)
             Button {
-                if prefs.selectedVoice.isEmpty {
-                    showVoiceAlert = true
-                } else {
+                if speaker.canSpeak {
                     speaker.speak(word)
+                } else {
+                    showVoiceAlert = true
                 }
             } label: {
                 Image(systemName: "speaker.wave.3")
@@ -150,7 +149,9 @@ struct WordView: View {
             .padding()
         }
         .onAppear {
-            if prefs.autoSpeak {
+            // autoSpeak is a preference; `speak` itself no-ops when `canSpeak`
+            // is false, so this never speaks in a wrong/absent voice.
+            if speaker.autoSpeakEnabled {
                 speaker.speak(word)
             }
         }
