@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Direct (outside the Mac App Store) distribution, signed with the
+         "Developer ID Application" certificate. This is what lets the app run
+         on Macs other than the build machine once it's also notarized. -->
+    <key>method</key>
+    <string>developer-id</string>
+    <key>teamID</key>
+    <string>L9G66SYUL8</string>
+    <key>signingStyle</key>
+    <string>automatic</string>
+</dict>
+</plist>
