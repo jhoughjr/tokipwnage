@@ -15,11 +15,22 @@ struct ContentView: View {
 
     var body: some View {
         NavigationSplitView {
-            WordListView(provider: wordProvider,
-                         selection: $selectedWord)
-            .onAppear {
-                wordProvider.loadAllWords()
-
+            // The sidebar needs a stack of its own. `.searchable` renders its field into
+            // the enclosing navigation bar, and the links in `WordListView`'s title bar
+            // need somewhere to push; with no stack here both silently do nothing. The
+            // Mac hosts them in the window toolbar regardless, which is why this only
+            // ever went missing on iOS.
+            NavigationStack {
+                WordListView(provider: wordProvider,
+                             selection: $selectedWord)
+                .onAppear {
+                    wordProvider.loadAllWords()
+                }
+                #if os(iOS)
+                // No title of its own — `WordListView` draws one. Inline keeps the bar a
+                // thin host for the search field rather than a tall empty header.
+                .navigationBarTitleDisplayMode(.inline)
+                #endif
             }
             .navigationSplitViewColumnWidth(min: 280, ideal: 320)
         } detail: {
