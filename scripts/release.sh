@@ -11,7 +11,7 @@
 # Sign-In and Security → App-Specific Passwords:
 #
 #   xcrun notarytool store-credentials tokipwnage-notary \
-#     --apple-id jimmyhoughjr@me.com \
+#     --apple-id jhough39@motech.edu \
 #     --team-id L9G66SYUL8 \
 #     --password <app-specific-password>
 #
