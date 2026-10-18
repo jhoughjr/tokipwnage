@@ -1,0 +1,17 @@
+Tokipwnage is a Toki Pona dictionary and phrase builder for Mac,
+iPhone, and iPad.
+
+Toki Pona is a minimal constructed language of around 130 words. Tokipwnage puts
+all of them in one browsable reference and lets you assemble them into phrases.
+
+FEATURES
+
+• Dictionary — every word with its meanings grouped by part of speech, in a
+  master/detail view that adapts to iPhone, iPad, and Mac
+• Search — across words or their meanings
+• Filters and favorites — narrow by part of speech, or to the words you starred;
+  favorites persist across launches
+• Speech — hear any word or phrase spoken in a voice you choose
+• Phrase builder — assemble English into Toki Pona and hear the result
+
+Native SwiftUI on every platform.
