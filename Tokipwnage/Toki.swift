@@ -152,7 +152,7 @@ public class Vocabulary {
             case .awen:
                 return [Definition(.noun,"safety"),
                         Definition(.noun,"wait"),
-                        Definition(.noun,"stabillity", isDeprecated: true),
+                        Definition(.noun,"stability", isDeprecated: true),
                         Definition(.adjective,"kept"),
                         Definition(.adjective,"safe"),
                         Definition(.adjective,"enduring"),
@@ -174,10 +174,10 @@ public class Vocabulary {
             case .esun:
                 return [Definition(.adjective, "commercial"),
                         Definition(.verb, "to trade"),
-                        Definition(.verb, "to exhange"),
+                        Definition(.verb, "to exchange"),
                         Definition(.noun, "trade"),
                         Definition(.noun, "transaction"),
-                        Definition(.noun, "exhange")]
+                        Definition(.noun, "exchange")]
             case .ijo:
                 return [Definition(.adjective, "physical"),
                         Definition(.adjective, "material"),
@@ -188,7 +188,7 @@ public class Vocabulary {
                 return [Definition(.noun, "evil"),
                         Definition(.adjective, "evil"),
                         Definition(.adjective, "complex"),
-                        Definition(.adjective, "unneccesary"),
+                        Definition(.adjective, "unnecessary"),
                         Definition(.verb, "to make worse", isDeprecated: true)
                         ]
             case .ilo:
@@ -239,7 +239,7 @@ public class Vocabulary {
                         ]
             case .jo:
                 return [Definition(.noun,"property"),
-                        Definition(.noun,"posessions", isDeprecated: true),
+                        Definition(.noun,"possessions", isDeprecated: true),
                         Definition(.verb,"to have"),
                         Definition(.verb,"to carry"),
                         Definition(.verb,"to contain"),
@@ -279,7 +279,7 @@ public class Vocabulary {
                         Definition(.noun,"leaf"),
                         ]
             case .ken:
-                return [Definition(.noun,"abillity"),
+                return [Definition(.noun,"ability"),
                         Definition(.noun,"possibility"),
                         Definition(.noun,"liberty"),
                         Definition(.noun,"right", isDeprecated: true),
@@ -290,12 +290,12 @@ public class Vocabulary {
                         ]
             case .kepeken:
                 return [Definition(.noun, "use"),
-                        Definition(.noun, "pracice", isDeprecated: true),
+                        Definition(.noun, "practice", isDeprecated: true),
                         Definition(.verb, "to use"),
                         Definition(.preposition,"using"),
                         Definition(.preposition,"with help of")]
             case .kijetesantakalu:
-                return [Definition(.noun, "racoon or other musteloid")]
+                return [Definition(.noun, "raccoon or other musteloid")]
             case .kili:
                 return [Definition(.noun, "fruit"),
                         Definition(.noun, "vegetable"),

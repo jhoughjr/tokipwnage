@@ -149,4 +149,25 @@ final class VocabularyTests: XCTestCase {
             XCTAssertTrue(hasWholeWordMatch)
         }
     }
+
+    // MARK: - 9. Corrected meanings are searchable
+    //
+    // The meanings are hand-typed and are the only searchable surface, so a typo hides a word from search.
+    // Issue #2 listed eight misspellings: "stability" found nothing until awen's meaning was corrected.
+
+    func testCorrectedMeaningsFindTheirWords() {
+        let expected: [(query: String, word: Vocabulary.Words)] = [
+            ("stability", .awen),
+            ("ability", .ken),
+            ("unnecessary", .ike),
+            ("exchange", .esun),
+            ("practice", .kepeken),
+            ("possessions", .jo),
+            ("raccoon", .kijetesantakalu),
+        ]
+        for (query, word) in expected {
+            let results = Vocabulary.Words.words(forEnglish: query)
+            XCTAssertTrue(results.contains(word), "expected .\(word.rawValue) among results for '\(query)', got \(results)")
+        }
+    }
 }
